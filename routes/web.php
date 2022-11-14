@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DatangController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +21,7 @@ Route::get('/', function () {
 });
 
 
-Route::get('/datang', function () {
-    return view('datang', [
-        'title' => 'Absen Datang'
-    ]);
-});
+Route::get('/datang', [DatangController::class, 'index']);
 
 Route::get('/pulang', function () {
     return view('pulang', [

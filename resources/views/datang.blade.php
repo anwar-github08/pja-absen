@@ -2,4 +2,6 @@
 @section('konten')
     <h5>Absen Datang</h5>
     <hr>
+    @livewire('datang.datang-create')
+    @livewire('datang.datang-show')
 @endsection

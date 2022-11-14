@@ -1,5 +1,3 @@
-<?php date_default_timezone_set('Asia/Bangkok'); ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,6 +10,7 @@
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/tgl/flatpickr.min.css">
     <title>{{ $title }}</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -30,6 +29,25 @@
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
     <script src="/tgl/flatpickr.js"></script>
+    @livewireScripts
 </body>
 
 </html>
+
+
+<script>
+    function previewImage() {
+
+        const img = document.querySelector('#img');
+        const imgPreview = document.querySelector('.img-preview');
+
+        imgPreview.style.display = "block";
+
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(img.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Karyawan;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -20,5 +22,37 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Karyawan::create([
+
+            'nama_karyawan' => 'Supriyanto',
+            'jabatan' => 'Administrasi'
+        ]);
+
+        Karyawan::create([
+
+            'nama_karyawan' => 'Nusron',
+            'jabatan' => 'Administrasi'
+        ]);
+        Karyawan::create([
+
+            'nama_karyawan' => 'Roqib',
+            'jabatan' => 'Administrasi'
+        ]);
+        Karyawan::create([
+
+            'nama_karyawan' => 'Anwar',
+            'jabatan' => 'Administrasi'
+        ]);
+        Karyawan::create([
+
+            'nama_karyawan' => 'Suhadak',
+            'jabatan' => 'Administrasi'
+        ]);
+        Karyawan::create([
+
+            'nama_karyawan' => 'Dikin',
+            'jabatan' => 'Administrasi'
+        ]);
     }
 }
