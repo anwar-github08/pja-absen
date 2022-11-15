@@ -1,6 +1,6 @@
 <div>
     <div class="row d-flex justify-content-center">
-        <div class="form-datang">
+        <div class="form">
 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Tanggal</label>
@@ -38,12 +38,24 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Foto</label>
                 <div class="col-sm-10">
-                    <input type="file" wire:model="foto_datang" class="form-control" id="img"
-                        onchange="previewImage()">
+                    <input type="file" wire:model="foto_datang" class="form-control">
                 </div>
             </div>
-            <div class="row mb-3">
-                <img class="img-preview img-fluid col-sm-3" wire:model='img'>
+
+            @if ($foto_datang)
+                <div class="row mb-3 text-center">
+                    @error('foto_datang')
+                        <i>file harus gambar</i>
+                    @else
+                        <img src="{{ $foto_datang->temporaryUrl() }}" class="img-fluid col-sm-3">
+                    @enderror
+                </div>
+            @endif
+
+            <div class="text-center">
+                <div wire:loading>
+                    <h6>Loading...</h6>
+                </div>
             </div>
 
             <div class="row">

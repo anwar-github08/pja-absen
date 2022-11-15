@@ -1,2 +1,2 @@
+# tampilkan gambar ketika upload
 cari lokasi
-tampilkan gambar ketika upload

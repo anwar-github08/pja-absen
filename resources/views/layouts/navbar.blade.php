@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-lg bg-light">
+<nav class="navbar navbar-expand-lg bg-light fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="#">PJA-ABSEN</a>
+        <a class="navbar-brand" href="/">PJA-ABSEN</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,8 +20,8 @@
                         Istirahat
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/is_masuk">Keluar</a></li>
-                        <li><a class="dropdown-item" href="/is_keluar">Masuk</a></li>
+                        <li><a class="dropdown-item" href="/is_keluar">Keluar</a></li>
+                        <li><a class="dropdown-item" href="/is_masuk">Masuk</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
