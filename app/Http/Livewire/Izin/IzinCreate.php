@@ -1,27 +1,29 @@
 <?php
 
-namespace App\Http\Livewire\Istirahat;
+namespace App\Http\Livewire\Izin;
 
-use App\Models\IsMasuk;
+use App\Models\Izin;
 use Livewire\Component;
 use App\Models\Karyawan;
 
 date_default_timezone_set('Asia/Bangkok');
 
-class IsMasukCreate extends Component
+class IzinCreate extends Component
 {
     public $karyawan_id = '-';
-    public $tanggal_is_masuk;
-    public $jam_is_masuk;
-    public $lokasi_is_masuk;
+    public $tanggal_izin;
+    public $jam_izin;
+    public $lokasi_izin;
+    public $keperluan = '';
 
     public $karyawans;
 
     public function render()
     {
-        $this->tanggal_is_masuk = date('d-m-Y');
-        $this->jam_is_masuk = date('H:i:s');
-        $this->lokasi_is_masuk = '-235252, 23235';
+
+        $this->tanggal_izin = date('d-m-Y');
+        $this->jam_izin = date('H:i:s');
+        $this->lokasi_izin = '-235252, 23235';
 
         // ambil id_karyawan semua
         $karyawan_id = Karyawan::select('id')->get();
@@ -31,7 +33,7 @@ class IsMasukCreate extends Component
         }
 
         // ambil id_karyawan yang sudah ada di tabel iskeluar pada tanggal sekarang
-        $karyawan_id_dipakai = IsMasuk::select('karyawan_id')->where('tanggal_is_masuk', date('Y-m-d'))->get();
+        $karyawan_id_dipakai = Izin::select('karyawan_id')->where('tanggal_izin', date('Y-m-d'))->get();
         foreach ($karyawan_id_dipakai as $key) {
             $karyawan_id_dipakai_array[] = $key->karyawan_id;
         }
@@ -43,24 +45,24 @@ class IsMasukCreate extends Component
             $notYetId = array_diff($karyawan_id_array, $karyawan_id_dipakai_array);
             $this->karyawans = Karyawan::whereIn('id', $notYetId)->orderBy('nama_karyawan', 'asc')->get();
         }
-
-        return view('livewire.istirahat.is-masuk-create');
+        return view('livewire.izin.izin-create');
     }
 
-    public function storeIsMasuk()
+    public function storeIzin()
     {
 
-        // langsung simpan di db
-        IsMasuk::create([
+        Izin::create([
 
             'karyawan_id' => $this->karyawan_id,
-            'tanggal_is_masuk' => date('Y-m-d', strtotime($this->tanggal_is_masuk)),
-            'jam_is_masuk' => $this->jam_is_masuk,
-            'lokasi_is_masuk' => $this->lokasi_is_masuk
+            'tanggal_izin' => date('Y-m-d', strtotime($this->tanggal_izin)),
+            'jam_izin' => $this->jam_izin,
+            'lokasi_izin' => $this->lokasi_izin,
+            'keperluan' => $this->keperluan
         ]);
 
-        $this->emit('eTriggerIsMasukShow');
+        $this->emit('eTriggerIzinShow');
 
         $this->karyawan_id = '-';
+        $this->keperluan = '';
     }
 }

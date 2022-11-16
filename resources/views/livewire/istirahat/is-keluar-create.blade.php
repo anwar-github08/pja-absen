@@ -10,6 +10,13 @@
             </div>
 
             <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Jam Keluar</label>
+                <div class="col-sm-10">
+                    <input type="text" wire:model='jam_is_keluar' class="form-control" disabled>
+                </div>
+            </div>
+
+            <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Lokasi</label>
                 <div class="col-sm-10">
                     <input type="text" wire:model="lokasi_is_keluar" class="form-control" disabled>
@@ -27,14 +34,14 @@
                     </select>
                 </div>
             </div>
-
+            {{-- 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Jam Keluar</label>
                 <div class="col-sm-10">
                     <input type="text" wire:model='jam_is_keluar' id="tgl" class="form-control"
                         placeholder="jam keluar">
                 </div>
-            </div>
+            </div> --}}
 
             <div class="text-center">
                 <div wire:loading>
@@ -44,9 +51,9 @@
 
             <div class="row">
                 @if ($karyawan_id == '-' or $jam_is_keluar == null)
-                    <button class="btn btn-primary" wire:click='storeIsKeluar' disabled>Absen</button>
+                    <button class="btn btn-danger" wire:click='storeIsKeluar' disabled>Absen</button>
                 @else
-                    <button class="btn btn-primary" wire:click='storeIsKeluar'>Absen</button>
+                    <button class="btn btn-danger" wire:click='storeIsKeluar'>Absen</button>
                 @endif
             </div>
 

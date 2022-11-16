@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('karyawan_id');
             $table->date('tanggal_izin');
             $table->time('jam_izin');
+            $table->string('lokasi_izin');
             $table->string('keperluan');
             $table->timestamps();
         });

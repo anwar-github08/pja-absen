@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire\Istirahat;
 
+use App\Models\Absen;
 use Livewire\Component;
 use App\Models\IsKeluar;
 use App\Models\Karyawan;
+
+date_default_timezone_set('Asia/Bangkok');
 
 class IsKeluarCreate extends Component
 {
@@ -18,6 +21,7 @@ class IsKeluarCreate extends Component
     public function render()
     {
         $this->tanggal_is_keluar = date('d-m-Y');
+        $this->jam_is_keluar = date('H:i:s');
         $this->lokasi_is_keluar = '-235252, 23235';
 
         // ambil id_karyawan semua
@@ -47,6 +51,29 @@ class IsKeluarCreate extends Component
     public function storeIsKeluar()
     {
 
-        dd($this->jam_is_keluar);
+        // cek di tabel absen, apakah di tanggal sekarang ada idkaryawan,
+        $absens = Absen::where('karyawan_id', $this->karyawan_id)->where('tanggal_absen', date('Y-m-d'))->get();
+        // jika belum ada, tambahkan
+        // jika sudah ada update
+
+        if (empty($absens)) {
+
+            dd('kosong');
+        }
+
+        dd($absens);
+
+        // langsung simpan di db
+        IsKeluar::create([
+
+            'karyawan_id' => $this->karyawan_id,
+            'tanggal_is_keluar' => date('Y-m-d', strtotime($this->tanggal_is_keluar)),
+            'jam_is_keluar' => $this->jam_is_keluar,
+            'lokasi_is_keluar' => $this->lokasi_is_keluar
+        ]);
+
+        $this->emit('eTriggerIsKeluarShow');
+
+        $this->karyawan_id = '-';
     }
 }

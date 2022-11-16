@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class IsMasuk extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function karyawan()
+    {
+        return $this->belongsTo(Karyawan::class);
+    }
 }

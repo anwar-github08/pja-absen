@@ -1,3 +1,29 @@
-<div>
-    {{-- The whole world belongs to you. --}}
+<div class="mt-5">
+    @if (session()->has('sukses'))
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ session('sukses') }}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
+    <table class="table table-bordered table-fluid text-white text-center">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Karyawan</th>
+                <th>Jam Masuk</th>
+                <th>Lokasi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($isMasuks as $isMasuk)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $isMasuk->karyawan->nama_karyawan }}</td>
+                    <td>{{ $isMasuk->jam_is_masuk }}</td>
+                    <td>{{ $isMasuk->lokasi_is_masuk }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
 </div>

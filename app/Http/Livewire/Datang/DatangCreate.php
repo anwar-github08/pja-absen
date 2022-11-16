@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Datang;
 
+use App\Models\Absen;
 use App\Models\Datang;
 use App\Models\Karyawan;
 use Livewire\Component;
@@ -65,6 +66,12 @@ class DatangCreate extends Component
 
     public function storeDatang()
     {
+        // cek di tabel absen, apakah di tanggal sekarang ada idkaryawan,
+        $absens = Absen::where('karyawan_id', $this->karyawan_id)->where('tanggal_absen', date('Y-m-d'))->get();
+        // jika belum ada, tambahkan
+        // jika sudah ada update
+
+        dd($absens);
 
         // validasi
         $this->validate([
@@ -86,6 +93,8 @@ class DatangCreate extends Component
             'lokasi_datang' => $this->lokasi_datang,
             'foto_datang' => $imgName
         ]);
+
+
 
         // buat emit untuk trigger datang-show
         $this->emit('eTriggerDatangShow');

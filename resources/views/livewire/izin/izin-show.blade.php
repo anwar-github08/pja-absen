@@ -11,17 +11,19 @@
             <tr>
                 <th>No</th>
                 <th>Karyawan</th>
-                <th>Jam Keluar</th>
+                <th>Jam izin</th>
                 <th>Lokasi</th>
+                <th>Keperluan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($isKeluars as $isKeluar)
+            @foreach ($izins as $izin)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $isKeluar->karyawan->nama_karyawan }}</td>
-                    <td>{{ $isKeluar->jam_is_keluar }}</td>
-                    <td>{{ $isKeluar->lokasi_is_keluar }}</td>
+                    <td>{{ $izin->karyawan->nama_karyawan }}</td>
+                    <td>{{ $izin->jam_izin }}</td>
+                    <td>{{ $izin->lokasi_izin }}</td>
+                    <td>{{ $izin->keperluan }}</td>
                 </tr>
             @endforeach
         </tbody>

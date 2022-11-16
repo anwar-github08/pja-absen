@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DatangController;
 use App\Http\Controllers\PulangController;
 use App\Http\Controllers\IstirahatController;
+use App\Http\Controllers\IzinController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,3 +28,4 @@ Route::get('/datang', [DatangController::class, 'index']);
 Route::get('/pulang', [PulangController::class, 'index']);
 Route::get('/is_keluar', [IstirahatController::class, 'isKeluar']);
 Route::get('/is_masuk', [IstirahatController::class, 'isMasuk']);
+Route::get('/izin', [IzinController::class, 'index']);

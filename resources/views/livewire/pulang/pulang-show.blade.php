@@ -11,7 +11,7 @@
             <tr>
                 <th>No</th>
                 <th>Karyawan</th>
-                <th>Jam</th>
+                <th>Jam Pulang</th>
                 <th>Lokasi</th>
                 <th>Foto</th>
             </tr>
