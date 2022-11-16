@@ -11,7 +11,7 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Jam</label>
+                <label class="col-sm-2 col-form-label">Jam Pulang</label>
                 <div class="col-sm-10">
                     <input type="text" wire:model='jam_pulang' class="form-control" disabled>
                 </div>

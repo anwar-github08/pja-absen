@@ -10,7 +10,7 @@
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Jam</label>
+                <label class="col-sm-2 col-form-label">Jam Datang</label>
                 <div class="col-sm-10">
                     <input type="text" wire:model='jam_datang' class="form-control" disabled>
                 </div>
