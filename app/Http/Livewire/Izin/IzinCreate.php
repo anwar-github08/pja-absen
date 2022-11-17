@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Izin;
 
 use App\Models\Izin;
+use App\Models\Absen;
 use Livewire\Component;
 use App\Models\Karyawan;
 
@@ -51,7 +52,7 @@ class IzinCreate extends Component
     public function storeIzin()
     {
 
-        Izin::create([
+        $izin = Izin::create([
 
             'karyawan_id' => $this->karyawan_id,
             'tanggal_izin' => date('Y-m-d', strtotime($this->tanggal_izin)),
@@ -59,6 +60,14 @@ class IzinCreate extends Component
             'lokasi_izin' => $this->lokasi_izin,
             'keperluan' => $this->keperluan
         ]);
+
+        // simpan atau update absen
+        Absen::updateOrInsert(
+            [
+                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_izin))
+            ],
+            ['izin_id' => $izin->id]
+        );
 
         $this->emit('eTriggerIzinShow');
 

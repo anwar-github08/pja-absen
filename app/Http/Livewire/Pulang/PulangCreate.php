@@ -2,9 +2,10 @@
 
 namespace App\Http\Livewire\Pulang;
 
+use App\Models\Absen;
+use App\Models\Pulang;
 use Livewire\Component;
 use App\Models\Karyawan;
-use App\Models\Pulang;
 use Livewire\WithFileUploads;
 
 date_default_timezone_set('Asia/Bangkok');
@@ -77,7 +78,7 @@ class PulangCreate extends Component
         $this->foto_pulang->storeAs('foto_pulang', $imgName, 'public');
 
         // simpan di db
-        Pulang::create([
+        $pulang = Pulang::create([
 
             'karyawan_id' => $this->karyawan_id,
             'tanggal_pulang' => date('Y-m-d', strtotime($this->tanggal_pulang)),
@@ -85,6 +86,15 @@ class PulangCreate extends Component
             'lokasi_pulang' => $this->lokasi_pulang,
             'foto_pulang' => $imgName
         ]);
+
+
+        // simpan atau update absen
+        Absen::updateOrInsert(
+            [
+                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_pulang))
+            ],
+            ['pulang_id' => $pulang->id]
+        );
 
         // buat emit untuk trigger pulang-show
         $this->emit('eTriggerPulangShow');

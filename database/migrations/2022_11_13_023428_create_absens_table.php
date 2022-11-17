@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('absens', function (Blueprint $table) {
             $table->id();
             $table->foreignId('karyawan_id');
-            $table->foreignId('datang_id');
-            $table->foreignId('is_keluar_id');
-            $table->foreignId('is_masuk_id');
-            $table->foreignId('pulang_id');
-            $table->foreignId('izin_id');
+            $table->foreignId('datang_id')->nullable();
+            $table->foreignId('is_keluar_id')->nullable();
+            $table->foreignId('is_masuk_id')->nullable();
+            $table->foreignId('pulang_id')->nullable();
+            $table->foreignId('izin_id')->nullable();
             $table->date('tanggal_absen');
             $table->timestamps();
         });

@@ -66,13 +66,6 @@ class DatangCreate extends Component
 
     public function storeDatang()
     {
-        // cek di tabel absen, apakah di tanggal sekarang ada idkaryawan,
-        $absens = Absen::where('karyawan_id', $this->karyawan_id)->where('tanggal_absen', date('Y-m-d'))->get();
-        // jika belum ada, tambahkan
-        // jika sudah ada update
-
-        dd($absens);
-
         // validasi
         $this->validate([
             'foto_datang' => 'image'
@@ -85,7 +78,7 @@ class DatangCreate extends Component
         $this->foto_datang->storeAs('foto_datang', $imgName, 'public');
 
         // simpan di db
-        Datang::create([
+        $datang = Datang::create([
 
             'karyawan_id' => $this->karyawan_id,
             'tanggal_datang' => date('Y-m-d', strtotime($this->tanggal_datang)),
@@ -94,6 +87,13 @@ class DatangCreate extends Component
             'foto_datang' => $imgName
         ]);
 
+        // simpan atau update absen
+        Absen::updateOrInsert(
+            [
+                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_datang))
+            ],
+            ['datang_id' => $datang->id]
+        );
 
 
         // buat emit untuk trigger datang-show
@@ -103,3 +103,26 @@ class DatangCreate extends Component
         $this->foto_datang = null;
     }
 }
+
+        // // cek di tabel absen, apakah di tanggal sekarang ada idkaryawan,
+        // $absens = Absen::where('karyawan_id', $this->karyawan_id)->where('tanggal_absen', date('Y-m-d'))->get();
+
+        // // jika belum ada, tambahkan
+        // if ($absens->isEmpty()) {
+
+        //     Absen::create([
+        //         'karyawan_id' => $this->karyawan_id,
+        //         'datang_id' => $datang->id,
+        //         'is_keluar_id' => null,
+        //         'is_masuk_id' => null,
+        //         'pulang_id' => null,
+        //         'izin_id' => null,
+        //         'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_datang)),
+        //     ]);
+        // }
+
+        // // jika sudah ada update
+        // else {
+
+        //     dd('ada');
+        // }

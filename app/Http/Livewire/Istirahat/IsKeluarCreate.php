@@ -51,26 +51,22 @@ class IsKeluarCreate extends Component
     public function storeIsKeluar()
     {
 
-        // cek di tabel absen, apakah di tanggal sekarang ada idkaryawan,
-        $absens = Absen::where('karyawan_id', $this->karyawan_id)->where('tanggal_absen', date('Y-m-d'))->get();
-        // jika belum ada, tambahkan
-        // jika sudah ada update
-
-        if (empty($absens)) {
-
-            dd('kosong');
-        }
-
-        dd($absens);
-
         // langsung simpan di db
-        IsKeluar::create([
+        $isKeluar = IsKeluar::create([
 
             'karyawan_id' => $this->karyawan_id,
             'tanggal_is_keluar' => date('Y-m-d', strtotime($this->tanggal_is_keluar)),
             'jam_is_keluar' => $this->jam_is_keluar,
             'lokasi_is_keluar' => $this->lokasi_is_keluar
         ]);
+
+        // simpan atau update absen
+        Absen::updateOrInsert(
+            [
+                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_keluar))
+            ],
+            ['is_keluar_id' => $isKeluar->id]
+        );
 
         $this->emit('eTriggerIsKeluarShow');
 

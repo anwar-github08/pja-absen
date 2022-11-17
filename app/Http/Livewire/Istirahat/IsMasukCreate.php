@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Istirahat;
 
+use App\Models\Absen;
 use App\Models\IsMasuk;
 use Livewire\Component;
 use App\Models\Karyawan;
@@ -51,13 +52,22 @@ class IsMasukCreate extends Component
     {
 
         // langsung simpan di db
-        IsMasuk::create([
+        $isMasuk = IsMasuk::create([
 
             'karyawan_id' => $this->karyawan_id,
             'tanggal_is_masuk' => date('Y-m-d', strtotime($this->tanggal_is_masuk)),
             'jam_is_masuk' => $this->jam_is_masuk,
             'lokasi_is_masuk' => $this->lokasi_is_masuk
         ]);
+
+        // simpan atau update absen
+        Absen::updateOrInsert(
+            [
+                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_masuk))
+            ],
+            ['is_masuk_id' => $isMasuk->id]
+        );
+
 
         $this->emit('eTriggerIsMasukShow');
 
