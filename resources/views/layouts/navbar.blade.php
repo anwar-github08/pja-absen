@@ -31,6 +31,11 @@
                     <a class="nav-link {{ $title == 'Absen Izin' ? 'active' : '' }}" href="/izin">Izin</a>
                 </li>
             </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a href="/admin" class="nav-link">Admin</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>

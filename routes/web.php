@@ -29,3 +29,23 @@ Route::get('/pulang', [PulangController::class, 'index']);
 Route::get('/is_keluar', [IstirahatController::class, 'isKeluar']);
 Route::get('/is_masuk', [IstirahatController::class, 'isMasuk']);
 Route::get('/izin', [IzinController::class, 'index']);
+
+
+// admin
+Route::get('/admin', function () {
+    return view('admin.dashboard', [
+        'title' => 'Dashboard'
+    ]);
+});
+
+Route::get('/data_absen', function () {
+    return view('admin.data_absen', [
+        'title' => 'Data Absen'
+    ]);
+});
+
+Route::get('/karyawan', function () {
+    return view('admin.karyawan', [
+        'title' => 'Data Karyawan'
+    ]);
+});
