@@ -15,25 +15,24 @@ class Absen extends Model
     {
         return $this->belongsTo(Karyawan::class);
     }
-
     public function datang()
     {
         return $this->belongsTo(Datang::class);
     }
     public function is_keluar()
     {
-        return $this->belongsTo(IsKeluar::class);
+        return $this->belongsTo(IsKeluar::class)->withDefault();
     }
     public function is_masuk()
     {
-        return $this->belongsTo(IsMasuk::class);
+        return $this->belongsTo(IsMasuk::class)->withDefault();
     }
     public function pulang()
     {
-        return $this->belongsTo(Pulang::class);
+        return $this->belongsTo(Pulang::class)->withDefault();
     }
     public function izin()
     {
-        return $this->belongsTo(Izin::class);
+        return $this->belongsTo(Izin::class)->withDefault();
     }
 }

@@ -66,7 +66,7 @@ class IzinCreate extends Component
             [
                 'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_izin))
             ],
-            ['izin_id' => $izin->id]
+            ['izin_id' => $izin->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
 
         $this->emit('eTriggerIzinShow');

@@ -22,9 +22,24 @@
                     <td>{{ $absen->is_keluar->jam_is_keluar }}</td>
                     <td>{{ $absen->is_masuk->jam_is_masuk }}</td>
                     <td>{{ $absen->pulang->jam_pulang }}</td>
-                    <td><a href="" class="btn btn-info btn-sm">Lihat Foto</a></td>
-                    <td><a href="" class="btn btn-info btn-sm">Lihat Foto</a></td>
-                    {{-- <td>{{ $absen->izin->jam_izin }}</td> --}}
+                    <td>
+                        <?php if ($absen->datang->foto_datang == null) : ?>
+                        -
+                        <?php else : ?>
+                        <a href="/showImage/datang/{{ $absen->datang->foto_datang }}" class="btn btn-info btn-sm">Lihat
+                            Foto</a>
+                        <?php endif ?>
+                    </td>
+
+                    <td>
+                        <?php if ($absen->pulang->foto_pulang == null) : ?>
+                        -
+                        <?php else : ?>
+                        <a href="/showImage/pulang/{{ $absen->pulang->foto_pulang }}" class="btn btn-info btn-sm">Lihat
+                            Foto</a>
+                        <?php endif ?>
+                    </td>
+                    <td>{{ $absen->izin->jam_izin }}</td>
                 </tr>
             @endforeach
         </tbody>

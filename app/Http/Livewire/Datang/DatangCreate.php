@@ -92,7 +92,7 @@ class DatangCreate extends Component
             [
                 'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_datang))
             ],
-            ['datang_id' => $datang->id]
+            ['datang_id' => $datang->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
 
 

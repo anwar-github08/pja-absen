@@ -65,7 +65,7 @@ class IsKeluarCreate extends Component
             [
                 'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_keluar))
             ],
-            ['is_keluar_id' => $isKeluar->id]
+            ['is_keluar_id' => $isKeluar->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
 
         $this->emit('eTriggerIsKeluarShow');

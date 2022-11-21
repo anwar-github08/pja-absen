@@ -65,7 +65,7 @@ class IsMasukCreate extends Component
             [
                 'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_masuk))
             ],
-            ['is_masuk_id' => $isMasuk->id]
+            ['is_masuk_id' => $isMasuk->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
 
 

@@ -93,7 +93,7 @@ class PulangCreate extends Component
             [
                 'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_pulang))
             ],
-            ['pulang_id' => $pulang->id]
+            ['pulang_id' => $pulang->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );
 
         // buat emit untuk trigger pulang-show

@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IzinController;
 use App\Http\Controllers\DatangController;
 use App\Http\Controllers\PulangController;
 use App\Http\Controllers\IstirahatController;
-use App\Http\Controllers\IzinController;
+use App\Http\Controllers\admin\AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,5 @@ Route::get('/karyawan', function () {
         'title' => 'Data Karyawan'
     ]);
 });
+
+Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
