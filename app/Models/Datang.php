@@ -13,6 +13,6 @@ class Datang extends Model
 
     public function karyawan()
     {
-        return $this->belongsTo(Karyawan::class);
+        return $this->belongsTo(Karyawan::class)->withDefault();
     }
 }
