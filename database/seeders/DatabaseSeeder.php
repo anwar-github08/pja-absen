@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Absen;
+use App\Models\Datang;
 use App\Models\Karyawan;
 use Illuminate\Database\Seeder;
 
@@ -23,36 +25,68 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        Karyawan::create([
+        // Karyawan::create([
 
-            'nama_karyawan' => 'Supriyanto',
-            'jabatan' => 'Administrasi'
+        //     'nama_karyawan' => 'Supriyanto',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+
+        // Karyawan::create([
+
+        //     'nama_karyawan' => 'Nusron',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+        // Karyawan::create([
+
+        //     'nama_karyawan' => 'Roqib',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+        // Karyawan::create([
+
+        //     'nama_karyawan' => 'Anwar',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+        // Karyawan::create([
+
+        //     'nama_karyawan' => 'Suhadak',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+        // Karyawan::create([
+
+        //     'nama_karyawan' => 'Dikin',
+        //     'jabatan' => 'Administrasi'
+        // ]);
+
+        Absen::create([
+            'karyawan_id' => 4,
+            'datang_id' => 11,
+            'tanggal_absen' => '2022-10-1'
+        ]);
+        Absen::create([
+            'karyawan_id' => 6,
+            'datang_id' => 12,
+            'tanggal_absen' => '2022-10-10'
+        ]);
+        Absen::create([
+            'karyawan_id' => 2,
+            'datang_id' => 13,
+            'tanggal_absen' => '2022-10-21'
         ]);
 
-        Karyawan::create([
-
-            'nama_karyawan' => 'Nusron',
-            'jabatan' => 'Administrasi'
+        Absen::create([
+            'karyawan_id' => 4,
+            'datang_id' => 11,
+            'tanggal_absen' => '2022-09-4'
         ]);
-        Karyawan::create([
-
-            'nama_karyawan' => 'Roqib',
-            'jabatan' => 'Administrasi'
+        Absen::create([
+            'karyawan_id' => 6,
+            'datang_id' => 12,
+            'tanggal_absen' => '2022-09-13'
         ]);
-        Karyawan::create([
-
-            'nama_karyawan' => 'Anwar',
-            'jabatan' => 'Administrasi'
-        ]);
-        Karyawan::create([
-
-            'nama_karyawan' => 'Suhadak',
-            'jabatan' => 'Administrasi'
-        ]);
-        Karyawan::create([
-
-            'nama_karyawan' => 'Dikin',
-            'jabatan' => 'Administrasi'
+        Absen::create([
+            'karyawan_id' => 2,
+            'datang_id' => 13,
+            'tanggal_absen' => '2022-09-26'
         ]);
     }
 }

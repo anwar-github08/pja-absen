@@ -46,10 +46,9 @@
 
 <script>
     config = {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
+        mode: "range",
+        // maxDate: 'today',
+        dateFormat: 'd-m-Y'
     };
     flatpickr("#tgl", config);
 </script>
