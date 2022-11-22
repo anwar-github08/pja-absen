@@ -36,10 +36,7 @@
 
 <script>
     config = {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
+        mode: "range"
     };
     flatpickr("#tgl", config);
 </script>

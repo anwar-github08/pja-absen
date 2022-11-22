@@ -1,4 +1,8 @@
 <div>
+    <div class="input-group">
+        <input type="text" id="tgl" class="form-control">
+        <button class="btn btn-primary">Tampilkan</button>
+    </div>
     <table class="table table-bordered table-fluid text-white text-center">
         <thead>
             <tr>
