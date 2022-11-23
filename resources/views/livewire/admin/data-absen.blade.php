@@ -23,6 +23,7 @@
                 <th>Pulang</th>
                 <th>Foto Datang</th>
                 <th>Foto Pulang</th>
+                <th>Detail</th>
                 <th>Izin</th>
             </tr>
         </thead>
@@ -40,9 +41,8 @@
                         @if ($absen->datang->foto_datang == null)
                             -
                         @else
-                            <a href="/showImage/datang/{{ $absen->datang->foto_datang }}" target="blank"
-                                class="btn btn-info btn-sm">Lihat
-                                Foto</a>
+                            <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
+                                width="100">
                         @endif
                     </td>
 
@@ -50,14 +50,26 @@
                         @if ($absen->pulang->foto_pulang == null)
                             -
                         @else
-                            <a href="/showImage/pulang/{{ $absen->pulang->foto_pulang }}" target="blank"
-                                class="btn btn-info btn-sm">Lihat
-                                Foto</a>
+                            <img src="/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}" alt="foto_datang"
+                                width="100">
                         @endif
                     </td>
-                    <td>{{ $absen->izin->jam_izin }}</td>
+                    <td><a href="detailAbsen/{{ $absen->id }}" target="blank" class="btn btn-info btn-sm">Detail</a>
+                    </td>
+                    <td>
+                        @if ($absen->izin->jam_izin == null)
+                            -
+                        @else
+                            <a href="/detailIzin/{{ $absen->izin->id }}" class="btn btn-sm btn-info">Lihat izin</a>
+                        @endif
+                    </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
 </div>
+
+{{-- 
+<input type="text" id="textCopy{{ $absen->id }}" value="{{ $absen->datang->lokasi_datang }}">
+<button class="btn btn-sm btn-secondary" onclick="copy({{ $absen->id }})">salin
+    lokasi</button> --}}

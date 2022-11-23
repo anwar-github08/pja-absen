@@ -52,3 +52,12 @@
     };
     flatpickr("#tgl", config);
 </script>
+
+<script>
+    function copy(kategori) {
+        var copyText = document.getElementById("textCopy" + kategori);
+        copyText.select();
+        document.execCommand("copy");
+        alert('berhasil disalin..!!');
+    }
+</script>

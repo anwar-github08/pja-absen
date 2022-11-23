@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Izin;
+use App\Models\Absen;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
@@ -19,6 +21,24 @@ class AdminController extends Controller
             'title' => $title,
             'kategori' => $kategori,
             'image' => $image
+        ]);
+    }
+
+    public function detailAbsen($id)
+    {
+
+        return view('admin.detail_absen', [
+            'title' => 'Detail Absen',
+            'absens' => Absen::where('id', $id)->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get()
+        ]);
+    }
+
+    public function detailIzin($id)
+    {
+
+        return view('admin.detail_izin', [
+            'title' => 'Detail Izin',
+            'izins' => Izin::where('id', $id)->with('karyawan')->get()
         ]);
     }
 }

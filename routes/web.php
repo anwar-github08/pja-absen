@@ -51,4 +51,12 @@ Route::get('/karyawan', function () {
     ]);
 });
 
-Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
+// Route::get('/jabatan', function () {
+//     return view('admin.jabatan', [
+//         'title' => 'Data Jabatan'
+//     ]);
+// });
+
+// Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
+Route::get('/detailAbsen/{id}', [AdminController::class, 'detailAbsen']);
+Route::get('/detailIzin/{id}', [AdminController::class, 'detailIzin']);
