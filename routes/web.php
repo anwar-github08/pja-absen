@@ -6,6 +6,7 @@ use App\Http\Controllers\DatangController;
 use App\Http\Controllers\PulangController;
 use App\Http\Controllers\IstirahatController;
 use App\Http\Controllers\admin\AdminController;
+use App\Models\Jabatan;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,7 +21,16 @@ use App\Http\Controllers\admin\AdminController;
 
 Route::get('/', function () {
     return view('index', [
-        'title' => 'PJA-ABSEN'
+        'title' => 'SIGASIK',
+        'jabatans' => Jabatan::all()
+    ]);
+});
+
+Route::get('/home/{id}', function ($id) {
+    return view('home', [
+        'title' => 'SIGASIK',
+        'id_jabatan' => $id,
+        'jabatans' => Jabatan::all()
     ]);
 });
 

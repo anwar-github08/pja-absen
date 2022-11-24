@@ -33,12 +33,3 @@
 </body>
 
 </html>
-{{-- <script>
-    config = {
-        enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
-        time_24hr: true
-    };
-    flatpickr("#tgl", config);
-</script> --}}

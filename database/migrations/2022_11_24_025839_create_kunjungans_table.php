@@ -13,10 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('karyawans', function (Blueprint $table) {
+        Schema::create('kunjungans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('jabatan_id');
-            $table->string('nama_karyawan');
+            $table->foreignId('karyawan_id');
+            $table->date('tanggal_kunjungan');
+            $table->time('jam_kunjungan');
+            $table->string('lokasi_kunjungan');
+            $table->string('foto_kunjungan');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('karyawans');
+        Schema::dropIfExists('kunjungans');
     }
 };

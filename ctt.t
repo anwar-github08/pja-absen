@@ -4,5 +4,3 @@
 # dihalaman admin, data absen bisa ditampilkan sesui tanggal
 # jika pilih tanggal yang sama, kasih validasi
 cari lokasi
-
-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
