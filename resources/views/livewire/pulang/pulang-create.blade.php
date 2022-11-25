@@ -61,9 +61,9 @@
 
             <div class="row">
                 @if ($foto_pulang == null or $karyawan_id == '-')
-                    <button class="btn btn-danger" wire:click='storePulang' disabled>Absen</button>
+                    <button class="btn btn-two" wire:click='storePulang' disabled>Absen</button>
                 @else
-                    <button class="btn btn-danger" wire:click='storePulang'>Absen</button>
+                    <button class="btn btn-two" wire:click='storePulang'>Absen</button>
                 @endif
             </div>
 

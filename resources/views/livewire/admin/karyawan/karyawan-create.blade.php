@@ -12,15 +12,11 @@
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Jabatan</label>
                     <div class="col-sm-10">
-                        <select wire:model="jabatan" class="form-select">
+                        <select wire:model="jabatan_id" class="form-select">
                             <option value="-">-- pilih jabatan --</option>
-                            <option value="Manager">Manager</option>
-                            <option value="Kepala Administrasi">Kepala Administrasi</option>
-                            <option value="Kepala Gudang">Kepala Gudang</option>
-                            <option value="Administrasi">Administrasi</option>
-                            <option value="Sales">Sales</option>
-                            <option value="Driver">Driver</option>
-                            <option value="Helper">Helper</option>
+                            @foreach ($jabatans as $jabatan)
+                                <option value="{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -32,7 +28,7 @@
                 </div>
 
                 <div class="row">
-                    @if ($nama_karyawan == '' or $jabatan == '-')
+                    @if ($nama_karyawan == '' or $jabatan_id == '-')
                         <button class="btn btn-primary" wire:click='storeKaryawan' disabled>Simpan</button>
                     @else
                         <button class="btn btn-primary" wire:click='storeKaryawan'>Simpan</button>

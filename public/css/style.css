@@ -26,7 +26,12 @@ body {
     font-family: "iner";
     font-size: 25px;
 }
-
+.nav-link {
+    color: rgb(47, 135, 108);
+}
+.navbar {
+    border-bottom: solid 2px rgb(174, 66, 26);
+}
 /* footer */
 .footer-area {
     position: absolute;
@@ -36,6 +41,7 @@ body {
     background-color: white;
     color: black;
     padding: 20px;
+    border-top: solid 2px rgb(174, 66, 26);
 }
 
 /* main konten */
@@ -44,6 +50,7 @@ body {
 }
 
 .active {
+    color: rgb(8, 85, 140);
     font-weight: bold;
     font-style: italic;
 }
@@ -55,4 +62,14 @@ body {
 /* other / custom */
 input[type="text"]:disabled {
     background-color: rgb(191, 190, 190);
+}
+
+.btn-two {
+    background-color: rgb(47, 135, 108);
+    color: white;
+}
+.btn-two:focus,
+.btn-two:hover {
+    background-color: rgb(0, 89, 62);
+    color: white;
 }

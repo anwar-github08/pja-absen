@@ -10,21 +10,19 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Karyawan</th>
                 <th>Jabatan</th>
                 <th>Aksi</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($karyawans as $karyawan)
+            @foreach ($jabatans as $jabatan)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $karyawan->nama_karyawan }}</td>
-                    <td>{{ $karyawan->jabatan->nama_jabatan }}</td>
+                    <td>{{ $jabatan->nama_jabatan }}</td>
                     <td>
                         <button class="btn btn-sm btn-danger"
                             onclick="return confirm('data yang berhubungan akan dihapus..!!') || event.stopImmediatePropagation()"
-                            wire:click='deleteKaryawan({{ $karyawan->id }})'>Hapus</button>
+                            wire:click='deleteJabatan({{ $jabatan->id }})'>Hapus</button>
                     </td>
                 </tr>
             @endforeach

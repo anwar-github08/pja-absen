@@ -50,9 +50,9 @@
 
             <div class="row">
                 @if ($karyawan_id == '-' or $jam_izin == null or $keperluan == '')
-                    <button class="btn btn-primary" wire:click='storeIzin' disabled>Izin</button>
+                    <button class="btn btn-two" wire:click='storeIzin' disabled>Izin</button>
                 @else
-                    <button class="btn btn-primary" wire:click='storeIzin'>Izin</button>
+                    <button class="btn btn-two" wire:click='storeIzin'>Izin</button>
                 @endif
             </div>
 

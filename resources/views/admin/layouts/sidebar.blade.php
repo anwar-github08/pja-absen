@@ -9,8 +9,16 @@
                     href="/data_absen">Data Absen</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ $title == 'Data Jabatan' ? 'active' : '' }}" href="/jabatan">Master
+                    Jabatan</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ $title == 'Data Karyawan' ? 'active' : '' }}" href="/karyawan">Master
                     Karyawan</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ $title == 'Akses Kunjungan' ? 'active' : '' }}" href="/akses_kunjungan">Akses
+                    Kunjungan</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/" onclick="return confirm('ke halaman utama?')">Home User</a>

@@ -12,7 +12,7 @@ class KaryawanShow extends Component
 
     public function render()
     {
-        $this->karyawans = Karyawan::orderby('nama_karyawan', 'asc')->get();
+        $this->karyawans = Karyawan::with('jabatan')->orderby('nama_karyawan', 'asc')->get();
 
         return view('livewire.admin.karyawan.karyawan-show');
     }

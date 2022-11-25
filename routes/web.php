@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\Jabatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IzinController;
 use App\Http\Controllers\DatangController;
 use App\Http\Controllers\PulangController;
 use App\Http\Controllers\IstirahatController;
+use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
-use App\Models\Jabatan;
+use App\Models\JabatanKunjungan;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +24,11 @@ use App\Models\Jabatan;
 Route::get('/', function () {
     return view('index', [
         'title' => 'SIGASIK',
-        'jabatans' => Jabatan::all()
+        'jabatans' => JabatanKunjungan::with('jabatan')->get()
     ]);
 });
 
-Route::get('/home/{id}', function ($id) {
+Route::get('/home', function ($id) {
     return view('home', [
         'title' => 'SIGASIK',
         'id_jabatan' => $id,
@@ -34,12 +36,12 @@ Route::get('/home/{id}', function ($id) {
     ]);
 });
 
-
 Route::get('/datang', [DatangController::class, 'index']);
 Route::get('/pulang', [PulangController::class, 'index']);
 Route::get('/is_keluar', [IstirahatController::class, 'isKeluar']);
 Route::get('/is_masuk', [IstirahatController::class, 'isMasuk']);
 Route::get('/izin', [IzinController::class, 'index']);
+Route::get('/kunjungan/{id_jabatan}', [KunjunganController::class, 'index']);
 
 
 // admin
@@ -61,11 +63,19 @@ Route::get('/karyawan', function () {
     ]);
 });
 
-// Route::get('/jabatan', function () {
-//     return view('admin.jabatan', [
-//         'title' => 'Data Jabatan'
-//     ]);
-// });
+Route::get('/jabatan', function () {
+    return view('admin.jabatan', [
+        'title' => 'Data Jabatan'
+    ]);
+});
+
+Route::get('/akses_kunjungan', function () {
+    return view('admin.akses_kunjungan', [
+        'title' => 'Akses Kunjungan'
+    ]);
+});
+
+
 
 // Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
 Route::get('/detailAbsen/{id}', [AdminController::class, 'detailAbsen']);

@@ -38,7 +38,7 @@
         }
 
         to {
-            transform: scale(1);
+            transform: scale(0.9);
         }
     }
 
@@ -49,7 +49,7 @@
     }
 
     .btn-kunjungan {
-        background-color: cadetblue;
+        background-color: rgb(47, 135, 108);
         color: white;
         width: 250px;
     }
@@ -80,10 +80,11 @@
                 </a>
 
                 <ul class="dropdown-menu">
-                    @foreach ($jabatans as $jabatan)
-                        <li><a class="dropdown-item" href="/home/{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</a>
-                        </li>
-                    @endforeach
+                    <li><a class="dropdown-item" href="/datang">Datang</a></li>
+                    <li><a class="dropdown-item" href="/is_keluar">Istirahat Keluar</a></li>
+                    <li><a class="dropdown-item" href="/is_masuk">Istirahat Masuk</a></li>
+                    <li><a class="dropdown-item" href="/pulang">Pulang</a></li>
+                    <li><a class="dropdown-item" href="/izin">Izin</a></li>
                 </ul>
             </div>
         </div>
@@ -97,7 +98,8 @@
 
                 <ul class="dropdown-menu">
                     @foreach ($jabatans as $jabatan)
-                        <li><a class="dropdown-item" href="/home/{{ $jabatan->id }}">{{ $jabatan->nama_jabatan }}</a>
+                        <li><a class="dropdown-item"
+                                href="/kunjungan/{{ $jabatan->jabatan->id }}">{{ $jabatan->jabatan->nama_jabatan }}</a>
                         </li>
                     @endforeach
                 </ul>

@@ -43,9 +43,9 @@
 
             <div class="row">
                 @if ($karyawan_id == '-' or $jam_is_masuk == null)
-                    <button class="btn btn-primary" wire:click='storeIsMasuk' disabled>Absen</button>
+                    <button class="btn btn-two" wire:click='storeIsMasuk' disabled>Absen</button>
                 @else
-                    <button class="btn btn-primary" wire:click='storeIsMasuk'>Absen</button>
+                    <button class="btn btn-two" wire:click='storeIsMasuk'>Absen</button>
                 @endif
             </div>
 
