@@ -10,6 +10,7 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
 use App\Models\JabatanKunjungan;
 
+use Stevebauman\Location\Facades\Location;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,22 @@ Route::get('/izin', [IzinController::class, 'index']);
 Route::get('/kunjungan/{id_jabatan}', [KunjunganController::class, 'index']);
 
 
+
+// lokasi
+Route::get('/lokasi', function () {
+
+    $ip = file_get_contents("https://api.ipify.org");
+    if ($position = Location::get($ip)) {
+        dd($position, $position->cityName, $position->latitude . ',' . $position->longitude);
+    } else {
+        dd('gagal');
+    }
+});
+
+
+
+
+
 // admin
 Route::get('/admin', function () {
     return view('admin.dashboard', [
@@ -54,6 +71,12 @@ Route::get('/admin', function () {
 Route::get('/data_absen', function () {
     return view('admin.data_absen', [
         'title' => 'Data Absen'
+    ]);
+});
+
+Route::get('/data_kunjungan', function () {
+    return view('admin.data_kunjungan', [
+        'title' => 'Data Kunjungan'
     ]);
 });
 

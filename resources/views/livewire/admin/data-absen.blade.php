@@ -68,8 +68,3 @@
         </tbody>
     </table>
 </div>
-
-{{-- 
-<input type="text" id="textCopy{{ $absen->id }}" value="{{ $absen->datang->lokasi_datang }}">
-<button class="btn btn-sm btn-secondary" onclick="copy({{ $absen->id }})">salin
-    lokasi</button> --}}

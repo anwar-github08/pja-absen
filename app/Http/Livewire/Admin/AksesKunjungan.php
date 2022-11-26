@@ -6,15 +6,17 @@ use App\Models\Jabatan;
 use App\Models\JabatanKunjungan;
 use Livewire\Component;
 
+use function PHPUnit\Framework\isEmpty;
+
 class AksesKunjungan extends Component
 {
     public $jabatans;
+    public $tombol = true;
 
     public $jabatan_id = [];
 
     public function mount()
     {
-
         $jabatan_id = JabatanKunjungan::select('jabatan_id')->get();
         foreach ($jabatan_id as $id) {
 
@@ -34,6 +36,11 @@ class AksesKunjungan extends Component
     public function render()
     {
         $this->jabatans = Jabatan::orderby('nama_jabatan', 'asc')->get();
+
+        if ($this->jabatans->isEmpty()) {
+
+            $this->tombol = false;
+        }
 
         return view('livewire.admin.akses-kunjungan');
     }

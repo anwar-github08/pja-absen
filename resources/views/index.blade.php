@@ -15,10 +15,11 @@
         font: 18px sans-serif;
         color: white;
         height: 100%;
-        margin-top: 10%;
+        margin-top: 5%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        /* align-items: center; */
+        align-items: center;
     }
 
     body::before {
@@ -67,12 +68,27 @@
         color: white;
         width: 250px;
     }
+
+    /* @media only screen and (max-width: 768px) {
+        body {
+            margin-top: 30%;
+        }
+    } */
 </style>
 
 <body>
+    <div class="">
+        <a href="/lokasi">Cek Lokasi</a>
+    </div>
+    <div class="mb-5">
+        <a href="/admin">
+            <img src="/img/admin.png" width="70">
+        </a>
+    </div>
+
     <div class="row text-center">
 
-        <div class="col-md-6 col-sm-6 mb-2">
+        <div class="col-md-6 col-sm-6 mb-3">
             <div class="dropdown">
                 <a class="btn btn-absen btn-lg dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false">

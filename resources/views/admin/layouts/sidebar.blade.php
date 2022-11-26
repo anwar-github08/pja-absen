@@ -9,6 +9,10 @@
                     href="/data_absen">Data Absen</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ ($title == 'Data Kunjungan') | ($title == 'Detail Kunjungan') ? 'active' : '' }}"
+                    href="/data_kunjungan">Data Kunjungan</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ $title == 'Data Jabatan' ? 'active' : '' }}" href="/jabatan">Master
                     Jabatan</a>
             </li>

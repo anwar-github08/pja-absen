@@ -28,7 +28,10 @@
                     @endforeach
                 </tbody>
             </table>
-            <button class="btn btn-primary" wire:click='storeJabatanId'>Simpan</button>
+            @if ($tombol == false)
+            @else
+                <button class="btn btn-primary" wire:click='storeJabatanId'>Simpan</button>
+            @endif
         </div>
 
     </div>
