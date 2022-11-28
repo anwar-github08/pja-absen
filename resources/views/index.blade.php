@@ -22,7 +22,7 @@
         align-items: center;
     }
 
-    body::before {
+    /* body::before {
         content: "";
         position: fixed;
         inset: 0;
@@ -31,7 +31,7 @@
         background: url("/img/sigasik.jpg") no-repeat center;
         background-size: contain;
         animation: backgroundZoomAnimate 60s infinite alternate forwards;
-    }
+    } */
 
     @keyframes backgroundZoomAnimate {
         from {
@@ -59,27 +59,30 @@
     .btn-absen:focus {
         background-color: rgb(10, 44, 68);
         color: white;
-        width: 250px;
     }
 
     .btn-kunjungan:hover,
     .btn-kunjungan:focus {
         background-color: rgb(24, 69, 70);
         color: white;
-        width: 250px;
     }
 
-    /* @media only screen and (max-width: 768px) {
-        body {
+    @media only screen and (max-width: 768px) {
+        .gambar {
             margin-top: 30%;
         }
-    } */
+
+        .btn-absen,
+        .btn-kunjungan {
+            font-size: 16px;
+        }
+    }
 </style>
 
 <body>
-    <div class="">
+    {{-- <div class="">
         <a href="/lokasi">Cek Lokasi</a>
-    </div>
+    </div> --}}
     <div class="mb-5">
         <a href="/admin">
             <img src="/img/admin.png" width="70">
@@ -122,6 +125,10 @@
             </div>
         </div>
 
+    </div>
+
+    <div class="gambar mt-5">
+        <img src="/img/sigasik.jpg" class="img-fluid" alt="" width="1500">
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="

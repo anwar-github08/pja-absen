@@ -6,6 +6,11 @@
 # jika jabatan kosong. tombol simpan disable pada akses kunjungan
 # kasih admin pada index
 # buat form mengelola data kunjungan
+# cara buka kamera hp laravel
+fungsi edit untuk keperluan izin
 
-cari lokasi
-cara buka kamera hp laravel
+datatables
+select2
+login untuk admin
+lokasi kurang akurat
+export pdf dan excel

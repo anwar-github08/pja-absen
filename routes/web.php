@@ -49,7 +49,16 @@ Route::get('/kunjungan/{id_jabatan}', [KunjunganController::class, 'index']);
 // lokasi
 Route::get('/lokasi', function () {
 
+    // get ip public
     $ip = file_get_contents("https://api.ipify.org");
+
+    // get location geoplugin
+    $geoplugin = file_get_contents("http://www.geoplugin.net/php.gp?id=" . $ip);
+
+    // get location torran geoapi
+    $torran = geoip()->getLocation($ip);
+
+    // get location stevebauman
     if ($position = Location::get($ip)) {
         dd($position, $position->cityName, $position->latitude . ',' . $position->longitude);
     } else {
