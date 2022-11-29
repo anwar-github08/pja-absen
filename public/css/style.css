@@ -59,9 +59,9 @@ body {
     width: 80%;
 }
 
-/* .form-select {
-    color: red;
-} */
+.select2-results {
+    color: black;
+}
 
 /* other / custom */
 input[type="text"]:disabled {
@@ -79,8 +79,15 @@ input[type="text"]:disabled {
 }
 
 /* seukuran hp */
-/* @media only screen and (max-width: 768px) {
-    * {
+@media only screen and (max-width: 768px) {
+    .fr {
         font-size: 16px;
     }
-} */
+    .table {
+        font-size: 12px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+}

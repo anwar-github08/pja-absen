@@ -25,7 +25,7 @@
 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Karyawan</label>
-                <div class="col-sm-10">
+                <div class="col-sm-10" wire:key='{{ $iteration }}' wire:ignore>
                     <select wire:model="karyawan_id" id="" class="form-select">
                         <option value="-">-- pilih karyawan --</option>
                         @foreach ($karyawans as $karyawan)
@@ -51,12 +51,25 @@
 
             <div class="row">
                 @if ($karyawan_id == '-' or $jam_is_keluar == null)
-                    <button class="btn btn-two" wire:click='storeIsKeluar' disabled>Absen</button>
+                    <button class="btn btn-two" wire:click='storeIsKeluar' disabled>Absen Istirahat Keluar</button>
                 @else
-                    <button class="btn btn-two" wire:click='storeIsKeluar'>Absen</button>
+                    <button class="btn btn-two" wire:click='storeIsKeluar'>Absen Istirahat Keluar</button>
                 @endif
             </div>
 
         </div>
     </div>
 </div>
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.form-select').select2({
+                theme: "classic",
+                width: '100%'
+            })
+            $('.form-select').on('change', function() {
+                @this.set('karyawan_id', this.value)
+            })
+        })
+    </script>
+@endpush

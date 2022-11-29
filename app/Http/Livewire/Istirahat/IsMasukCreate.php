@@ -17,6 +17,7 @@ class IsMasukCreate extends Component
     public $lokasi_is_masuk;
 
     public $karyawans;
+    public $iteration = 0;
 
     public function render()
     {
@@ -48,6 +49,7 @@ class IsMasukCreate extends Component
         return view('livewire.istirahat.is-masuk-create');
     }
 
+
     public function storeIsMasuk()
     {
 
@@ -70,7 +72,7 @@ class IsMasukCreate extends Component
 
 
         $this->emit('eTriggerIsMasukShow');
-
+        $this->iteration++;
         $this->karyawan_id = '-';
     }
 }

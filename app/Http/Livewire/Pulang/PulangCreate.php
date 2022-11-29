@@ -22,6 +22,7 @@ class PulangCreate extends Component
     public $foto_pulang;
 
     public $karyawans;
+    public $iteration = 0;
 
     public function render()
     {
@@ -99,7 +100,10 @@ class PulangCreate extends Component
         // buat emit untuk trigger pulang-show
         $this->emit('eTriggerPulangShow');
 
+        $this->iteration++;
         $this->karyawan_id = '-';
         $this->foto_pulang = null;
+
+        // return redirect()->to('/');
     }
 }

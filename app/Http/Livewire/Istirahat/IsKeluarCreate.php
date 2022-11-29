@@ -17,6 +17,7 @@ class IsKeluarCreate extends Component
     public $lokasi_is_keluar;
 
     public $karyawans;
+    public $iteration = 0;
 
     public function render()
     {
@@ -69,7 +70,7 @@ class IsKeluarCreate extends Component
         );
 
         $this->emit('eTriggerIsKeluarShow');
-
+        $this->iteration++;
         $this->karyawan_id = '-';
     }
 }

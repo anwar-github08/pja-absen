@@ -24,7 +24,7 @@
                     <td>{{ $pulang->jam_pulang }}</td>
                     <td>{{ $pulang->lokasi_pulang }}</td>
                     <td>
-                        <img src="/storage/foto_pulang/{{ $pulang->foto_pulang }}" alt="foto_pulang" width="100">
+                        <img src="/storage/foto_pulang/{{ $pulang->foto_pulang }}" alt="foto_pulang" width="70">
                     </td>
                 </tr>
             @endforeach

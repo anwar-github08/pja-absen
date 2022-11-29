@@ -20,6 +20,7 @@ class KunjunganCreate extends Component
     public $id_jabatan;
 
     public $karyawans;
+    public $iteration = 0;
 
     public function mount($id_jabatan)
     {
@@ -91,6 +92,7 @@ class KunjunganCreate extends Component
         // buat emit untuk trigger kunjungan-show
         $this->emit('eTriggerKunjunganShow');
 
+        $this->iteration++;
         $this->karyawan_id = '-';
         $this->foto_kunjungan = null;
     }

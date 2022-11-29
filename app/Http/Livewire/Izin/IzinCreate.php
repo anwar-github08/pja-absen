@@ -18,6 +18,7 @@ class IzinCreate extends Component
     public $keperluan = '';
 
     public $karyawans;
+    public $iteration = 0;
 
     public function render()
     {
@@ -58,7 +59,7 @@ class IzinCreate extends Component
             'tanggal_izin' => date('Y-m-d', strtotime($this->tanggal_izin)),
             'jam_izin' => $this->jam_izin,
             'lokasi_izin' => $this->lokasi_izin,
-            'keperluan' => $this->keperluan
+            'keperluan' => ucwords($this->keperluan)
         ]);
 
         // simpan atau update absen
@@ -71,6 +72,7 @@ class IzinCreate extends Component
 
         $this->emit('eTriggerIzinShow');
 
+        $this->iteration++;
         $this->karyawan_id = '-';
         $this->keperluan = '';
     }

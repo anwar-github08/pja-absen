@@ -21,6 +21,7 @@ class DatangCreate extends Component
     public $foto_datang;
 
     public $karyawans;
+    public $iteration = 0;
 
     public function render()
     {
@@ -101,6 +102,7 @@ class DatangCreate extends Component
         // buat emit untuk trigger datang-show
         $this->emit('eTriggerDatangShow');
 
+        $this->iteration++;
         $this->karyawan_id = '-';
         $this->foto_datang = null;
     }

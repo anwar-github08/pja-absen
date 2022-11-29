@@ -25,7 +25,7 @@
                     <td>{{ $kunjungan->lokasi_kunjungan }}</td>
                     <td>
                         <img src="/storage/foto_kunjungan/{{ $kunjungan->foto_kunjungan }}" alt="foto_kunjungan"
-                            width="100">
+                            width="70">
                     </td>
                 </tr>
             @endforeach

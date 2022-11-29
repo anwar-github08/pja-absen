@@ -7,10 +7,16 @@
 # kasih admin pada index
 # buat form mengelola data kunjungan
 # cara buka kamera hp laravel
+# select2
+
+/user view/
+datatables
 fungsi edit untuk keperluan izin
 
-datatables
-select2
+/admin view/
+fungsi hapus data pda admin
 login untuk admin
-lokasi kurang akurat
 export pdf dan excel
+
+/other/
+lokasi kurang akurat

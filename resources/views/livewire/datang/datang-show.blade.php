@@ -24,7 +24,7 @@
                     <td>{{ $datang->jam_datang }}</td>
                     <td>{{ $datang->lokasi_datang }}</td>
                     <td>
-                        <img src="/storage/foto_datang/{{ $datang->foto_datang }}" alt="foto_datang" width="100">
+                        <img src="/storage/foto_datang/{{ $datang->foto_datang }}" alt="foto_datang" width="70">
                     </td>
                 </tr>
             @endforeach
