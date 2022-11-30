@@ -18,7 +18,6 @@ class IsKeluarShow extends Component
     protected $listeners = ['eTriggerIsKeluarShow'];
     public function eTriggerIsKeluarShow()
     {
-
         session()->flash('sukses', 'Berhasil Absen!!');
     }
 }

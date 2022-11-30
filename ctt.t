@@ -10,10 +10,11 @@
 # select2
 
 /user view/
-datatables
+# datatables
 fungsi edit untuk keperluan izin
 
 /admin view/
+datatables
 fungsi hapus data pda admin
 login untuk admin
 export pdf dan excel

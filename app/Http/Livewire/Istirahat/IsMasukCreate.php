@@ -72,6 +72,8 @@ class IsMasukCreate extends Component
 
 
         $this->emit('eTriggerIsMasukShow');
+        $this->dispatchBrowserEvent('triggerJs');
+
         $this->iteration++;
         $this->karyawan_id = '-';
     }

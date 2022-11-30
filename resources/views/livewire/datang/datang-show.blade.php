@@ -6,7 +6,7 @@
         </div>
     @endif
 
-    <table class="table table-bordered table-fluid text-white text-center">
+    <table class="table table-dark table-striped table-bordered table-fluid text-white text-center">
         <thead>
             <tr>
                 <th>No</th>
@@ -31,3 +31,17 @@
         </tbody>
     </table>
 </div>
+
+@push('script')
+    <script>
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+
+        document.addEventListener("triggerJs", () => {
+            Livewire.hook('element.initialized', () => {
+                $('.table').DataTable();
+            })
+        })
+    </script>
+@endpush

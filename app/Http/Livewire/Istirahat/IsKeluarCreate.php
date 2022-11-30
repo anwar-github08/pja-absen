@@ -70,6 +70,8 @@ class IsKeluarCreate extends Component
         );
 
         $this->emit('eTriggerIsKeluarShow');
+        $this->dispatchBrowserEvent('triggerJs');
+
         $this->iteration++;
         $this->karyawan_id = '-';
     }

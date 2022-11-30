@@ -91,6 +91,7 @@ class KunjunganCreate extends Component
 
         // buat emit untuk trigger kunjungan-show
         $this->emit('eTriggerKunjunganShow');
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->iteration++;
         $this->karyawan_id = '-';

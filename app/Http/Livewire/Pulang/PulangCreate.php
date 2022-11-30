@@ -99,6 +99,7 @@ class PulangCreate extends Component
 
         // buat emit untuk trigger pulang-show
         $this->emit('eTriggerPulangShow');
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->iteration++;
         $this->karyawan_id = '-';

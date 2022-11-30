@@ -1,7 +1,7 @@
-@font-face {
+/* @font-face {
     font-family: "iner";
     src: url("/font/iner.otf");
-}
+} */
 
 * {
     box-sizing: border-box;
@@ -61,6 +61,36 @@ body {
 
 .select2-results {
     color: black;
+}
+
+/* datatables */
+.dataTables_info {
+    color: white;
+    visibility: hidden;
+}
+
+.dataTables_length {
+    visibility: hidden;
+    color: white;
+}
+/* .dataTables_length select {
+    color: white;
+}
+.dataTables_length select option {
+    color: black;
+} */
+
+.dataTables_filter {
+    color: white;
+    margin-bottom: 10px;
+}
+.dataTables_filter input {
+    color: white;
+    background-color: grey;
+}
+
+.dataTables_paginate {
+    color: white;
 }
 
 /* other / custom */

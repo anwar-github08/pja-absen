@@ -17,7 +17,7 @@ class Absen extends Model
     }
     public function datang()
     {
-        return $this->belongsTo(Datang::class);
+        return $this->belongsTo(Datang::class)->withDefault();
     }
     public function is_keluar()
     {
@@ -35,4 +35,6 @@ class Absen extends Model
     {
         return $this->belongsTo(Izin::class)->withDefault();
     }
+
+    // fungsi with default untuk megizinkan agar id yang tidak ada bisa ditampikan
 }

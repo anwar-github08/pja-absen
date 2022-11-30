@@ -63,5 +63,17 @@
                 @this.set('karyawan_id', this.value)
             })
         })
+
+        document.addEventListener("triggerJs", () => {
+            Livewire.hook('element.initialized', () => {
+                $('.form-select').select2({
+                    theme: "classic",
+                    width: '100%'
+                })
+                $('.form-select').on('change', function() {
+                    @this.set('karyawan_id', this.value)
+                })
+            })
+        })
     </script>
 @endpush

@@ -101,6 +101,8 @@ class DatangCreate extends Component
 
         // buat emit untuk trigger datang-show
         $this->emit('eTriggerDatangShow');
+        // untuk trigger js
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->iteration++;
         $this->karyawan_id = '-';

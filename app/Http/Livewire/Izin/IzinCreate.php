@@ -71,6 +71,7 @@ class IzinCreate extends Component
         );
 
         $this->emit('eTriggerIzinShow');
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->iteration++;
         $this->karyawan_id = '-';
