@@ -110,3 +110,33 @@ header {
 .form {
     width: 80%;
 }
+
+/* datatables */
+.dataTables_info {
+    color: white;
+    visibility: hidden;
+}
+
+.dataTables_length {
+    visibility: hidden;
+    color: white;
+}
+/* .dataTables_length select {
+    color: white;
+}
+.dataTables_length select option {
+    color: black;
+} */
+
+.dataTables_filter {
+    color: white;
+    margin-bottom: 10px;
+}
+.dataTables_filter input {
+    color: white;
+    background-color: grey;
+}
+
+.dataTables_paginate {
+    color: white;
+}

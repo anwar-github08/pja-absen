@@ -33,5 +33,7 @@ class DataKunjungan extends Component
 
             $this->kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
         }
+
+        $this->dispatchBrowserEvent('triggerJs');
     }
 }

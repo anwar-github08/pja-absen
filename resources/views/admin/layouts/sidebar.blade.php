@@ -25,6 +25,19 @@
                     Kunjungan</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ $title == 'Export' ? 'active' : '' }}" href="/export">Export</a>
+            </li>
+            {{-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Export
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/exportAbsen">Data Absen</a></li>
+                    <li><a class="dropdown-item" href="/exportKunjungan">Data Kunjungan</a></li>
+                </ul>
+            </li> --}}
+
+            <li class="nav-item">
                 <a class="nav-link" href="/" onclick="return confirm('ke halaman utama?')">Home User</a>
             </li>
         </ul>

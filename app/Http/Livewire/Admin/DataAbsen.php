@@ -33,5 +33,7 @@ class DataAbsen extends Component
 
             $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
         }
+
+        $this->dispatchBrowserEvent('triggerJs');
     }
 }

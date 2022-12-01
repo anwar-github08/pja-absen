@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/tgl/flatpickr.min.css">
 
@@ -37,21 +38,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
     </script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
     <script src="/js/dashboard.js"></script>
     <script src="/tgl/flatpickr.js"></script>
     @livewireScripts
 </body>
 
 </html>
-
-<script>
-    config = {
-        mode: "range",
-        // maxDate: 'today',
-        dateFormat: 'd-m-Y'
-    };
-    flatpickr("#tgl", config);
-</script>
+@stack('script')
 
 <script>
     function copy(kategori) {

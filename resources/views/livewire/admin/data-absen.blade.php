@@ -11,7 +11,7 @@
         </div>
     </div>
 
-    <table class="table table-bordered table-fluid text-white text-center">
+    <table class="table table-dark table-striped table-bordered table-fluid text-white text-center">
         <thead>
             <tr>
                 <th>No</th>
@@ -68,3 +68,24 @@
         </tbody>
     </table>
 </div>
+
+@push('script')
+    <script>
+        config = {
+            mode: "range",
+            maxDate: 'today',
+            dateFormat: 'd-m-Y'
+        };
+        flatpickr("#tgl", config);
+
+        $(document).ready(function() {
+            $('.table').DataTable();
+        });
+
+        document.addEventListener("triggerJs", () => {
+            Livewire.hook('element.initialized', () => {
+                $('.table').DataTable();
+            })
+        })
+    </script>
+@endpush

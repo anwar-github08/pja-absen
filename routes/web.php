@@ -112,3 +112,6 @@ Route::get('/akses_kunjungan', function () {
 // Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
 Route::get('/detailAbsen/{id}', [AdminController::class, 'detailAbsen']);
 Route::get('/detailIzin/{id}', [AdminController::class, 'detailIzin']);
+Route::get('/detailKunjungan/{id}', [AdminController::class, 'detailKunjungan']);
+Route::get('/export', [AdminController::class, 'export']);
+Route::get('/exportAbsen', [AdminController::class, 'exportAbsen']);
