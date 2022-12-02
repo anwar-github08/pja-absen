@@ -12,6 +12,7 @@ class DataKunjungan extends Component
 
     public function mount()
     {
+        $this->tanggal = date('Y-m-d');
         $this->kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d'))->with('karyawan')->get();
     }
 

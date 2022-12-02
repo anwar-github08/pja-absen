@@ -32,6 +32,7 @@ class KaryawanCreate extends Component
 
         // buat emit untuk trigger karyawan-show
         $this->emit('eTriggerKaryawanShow');
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->nama_karyawan = '';
         $this->jabatan_id = '-';

@@ -1,7 +1,7 @@
 <div>
     <div class="col-md-4">
         <div class="input-group mb-4">
-            <input type="text" wire:model='tanggal' id="tgl" class="form-control" placeholder="Tanggal"
+            <input type="text" wire:model.lazy='tanggal' id="tgl" class="form-control" placeholder="Tanggal"
                 autocomplete="off">
             @if ($tanggal == '')
                 <button class="btn btn-primary" wire:click='showData' disabled>Tampilkan</button>
@@ -67,6 +67,10 @@
             @endforeach
         </tbody>
     </table>
+    @if (count($absens) !== 0)
+        <a href="/exportExcelAbsen/{{ $tanggal }}" class="btn btn-sm btn-success mt-3">Export Excel</a>
+        <a href="/exportPdfAbsen/{{ $tanggal }}" class="btn btn-sm btn-info mt-3">Export PDF</a>
+    @endif
 </div>
 
 @push('script')
@@ -83,7 +87,7 @@
         });
 
         document.addEventListener("triggerJs", () => {
-            Livewire.hook('element.initialized', () => {
+            Livewire.hook('message.processed', () => {
                 $('.table').DataTable();
             })
         })

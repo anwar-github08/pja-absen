@@ -60,11 +60,103 @@ class AdminController extends Controller
         ]);
     }
 
-    public function exportAbsen()
-    {
 
-        return view('admin.export.export_absen', [
-            'title' => 'Export'
+    // export
+
+    public function exportExcelAbsen($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+        return view('admin.export.export_excel_absen', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'absens' => $absens
+        ]);
+    }
+
+    public function exportPdfAbsen($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+        return view('admin.export.export_pdf_absen', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'absens' => $absens
+        ]);
+    }
+
+
+    public function exportExcelKunjungan($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+        return view('admin.export.export_excel_kunjungan', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'kunjungans' => $kunjungans
+        ]);
+    }
+
+    public function exportPdfKunjungan($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+        return view('admin.export.export_pdf_kunjungan', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'kunjungans' => $kunjungans
         ]);
     }
 }

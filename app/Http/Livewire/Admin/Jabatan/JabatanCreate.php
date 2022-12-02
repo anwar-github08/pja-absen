@@ -24,6 +24,7 @@ class JabatanCreate extends Component
 
         // buat emit untuk trigger jabatan-show
         $this->emit('eTriggerJabatanShow');
+        $this->dispatchBrowserEvent('triggerJs');
 
         $this->nama_jabatan = '';
     }

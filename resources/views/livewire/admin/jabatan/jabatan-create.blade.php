@@ -5,7 +5,8 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Nama Jabatan</label>
                 <div class="col-sm-10">
-                    <input type="text" wire:model="nama_jabatan" class="form-control" placeholder="Nama Jabatan">
+                    <input type="text" wire:model.debounce.500ms="nama_jabatan" class="form-control"
+                        placeholder="Nama Jabatan">
                 </div>
             </div>
 

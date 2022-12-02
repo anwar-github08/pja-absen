@@ -39,6 +39,10 @@
             @endforeach
         </tbody>
     </table>
+    @if (count($kunjungans) !== 0)
+        <a href="/exportExcelKunjungan/{{ $tanggal }}" class="btn btn-sm btn-success mt-3">Export Excel</a>
+        <a href="/exportPdfKunjungan/{{ $tanggal }}" class="btn btn-sm btn-info mt-3">Export PDF</a>
+    @endif
 </div>
 @push('script')
     <script>
@@ -54,7 +58,7 @@
         });
 
         document.addEventListener("triggerJs", () => {
-            Livewire.hook('element.initialized', () => {
+            Livewire.hook('message.processed', () => {
                 $('.table').DataTable();
             })
         })

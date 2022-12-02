@@ -11,15 +11,17 @@
 
 /user view/
 # datatables
-fungsi edit untuk keperluan izin
 login untuk hak akses
 
 /admin view/
 # datatables
 # detail pada kunjungan
+# export pdf dan excel
 fungsi hapus data pda admin
 login untuk admin
-export pdf dan excel
 
 /other/
 lokasi kurang akurat
+
+relasi: jika jabatan dihapus, data karyawan berdasar jabatan akan kehapus
+jika karyawan dihapus, semua data yang ada id karyawan akan kehapus

@@ -24,9 +24,7 @@
                 <a class="nav-link {{ $title == 'Akses Kunjungan' ? 'active' : '' }}" href="/akses_kunjungan">Akses
                     Kunjungan</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {{ $title == 'Export' ? 'active' : '' }}" href="/export">Export</a>
-            </li>
+
             {{-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Export

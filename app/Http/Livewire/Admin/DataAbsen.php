@@ -12,6 +12,7 @@ class DataAbsen extends Component
 
     public function mount()
     {
+        $this->tanggal = date('Y-m-d');
         $this->absens = Absen::where('tanggal_absen', date('Y-m-d'))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
     }
 
