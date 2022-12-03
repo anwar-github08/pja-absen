@@ -15,8 +15,10 @@
     @livewireStyles
 </head>
 
-<body>
-
+<body onload="loader()">
+    <div class="preloader">
+        <img src="/img/preloaderadmin.svg" width="300">
+    </div>
     @include('admin.layouts.header')
 
     <div class="container-fluid">
@@ -54,4 +56,12 @@
         document.execCommand("copy");
         alert('berhasil disalin..!!');
     }
+</script>
+
+<script>
+    function loader() {
+        setTimeout(function() {
+            $('.preloader').fadeOut()
+        }, 2000);
+    };
 </script>

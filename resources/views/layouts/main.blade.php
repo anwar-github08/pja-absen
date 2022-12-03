@@ -15,7 +15,11 @@
     @livewireStyles
 </head>
 
-<body>
+<body onload="loader()">
+
+    <div class="preloader">
+        <img src="/img/preloader.svg" width="120">
+    </div>
 
     @include('layouts.navbar')
 
@@ -37,4 +41,14 @@
 </body>
 
 </html>
+
+<script>
+    function loader() {
+        setTimeout(function() {
+            $('.preloader').fadeOut()
+        }, 2000);
+    };
+</script>
+
+
 @stack('script')

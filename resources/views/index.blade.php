@@ -77,12 +77,29 @@
             font-size: 16px;
         }
     }
+
+    .preloader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        opacity: .80;
+    }
 </style>
 
-<body>
+<body onload="loader()">
     {{-- <div class="">
         <a href="/lokasi">Cek Lokasi</a>
     </div> --}}
+    <div class="preloader">
+        <img src="/img/preloader.svg" width="120">
+    </div>
     <div class="mb-5">
         <a href="/admin">
             <img src="/img/admin.png" width="70">
@@ -139,3 +156,11 @@
 </body>
 
 </html>
+
+<script>
+    function loader() {
+        setTimeout(function() {
+            $('.preloader').fadeOut()
+        }, 2000);
+    };
+</script>

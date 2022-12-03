@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/img/sigasik.jpg" alt="Bootstrap" width="120">
+            <img src="/img/sigasik.png" alt="Bootstrap" width="120">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">

@@ -11,12 +11,14 @@
 
 /user view/
 # datatables
+# loading selama page diload
 login untuk hak akses
 
 /admin view/
 # datatables
 # detail pada kunjungan
 # export pdf dan excel
+# relasi jika data dihapus
 fungsi hapus data pda admin
 login untuk admin
 
