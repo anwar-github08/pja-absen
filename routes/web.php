@@ -8,6 +8,7 @@ use App\Http\Controllers\PulangController;
 use App\Http\Controllers\IstirahatController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
+use App\Http\Controllers\admin\LoginController;
 use App\Models\JabatanKunjungan;
 
 use Stevebauman\Location\Facades\Location;
@@ -120,3 +121,8 @@ Route::get('/exportPdfAbsen/{tanggal}', [AdminController::class, 'exportPdfAbsen
 
 Route::get('/exportExcelKunjungan/{tanggal}', [AdminController::class, 'exportExcelKunjungan']);
 Route::get('/exportPdfKunjungan/{tanggal}', [AdminController::class, 'exportPdfKunjungan']);
+
+
+// login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'auth']);

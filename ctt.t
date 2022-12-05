@@ -19,8 +19,8 @@ login untuk hak akses
 # detail pada kunjungan
 # export pdf dan excel
 # relasi jika data dihapus
+* login untuk admin
 fungsi hapus data pda admin
-login untuk admin
 
 /other/
 lokasi kurang akurat

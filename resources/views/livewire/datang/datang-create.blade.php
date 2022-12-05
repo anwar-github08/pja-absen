@@ -3,23 +3,23 @@
         <div class="form">
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Tanggal</label>
+                {{-- <label class="col-sm-2 col-form-label">Tanggal</label> --}}
                 <div class="col-sm-10">
-                    <input type="text" wire:model="tanggal_datang" class="form-control" disabled>
+                    <input type="hidden" wire:model="tanggal_datang" class="form-control" disabled>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Jam Datang</label>
+                {{-- <label class="col-sm-2 col-form-label">Jam Datang</label> --}}
                 <div class="col-sm-10">
-                    <input type="text" wire:model='jam_datang' class="form-control" disabled>
+                    <input type="hidden" wire:model='jam_datang' class="form-control" disabled>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Lokasi</label>
+                {{-- <label class="col-sm-2 col-form-label">Lokasi</label> --}}
                 <div class="col-sm-10">
-                    <input type="text" wire:model="lokasi_datang" class="form-control" disabled>
+                    <input type="hidden" wire:model="lokasi_datang" class="form-control" disabled>
                 </div>
             </div>
 
