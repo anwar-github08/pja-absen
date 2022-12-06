@@ -20,7 +20,7 @@
             align-items: center;
             padding-top: 40px;
             padding-bottom: 40px;
-            background-color: #f5f5f5;
+            background-color: #c2eff0;
         }
 
         .form-signin {
@@ -110,23 +110,24 @@
 
 <body class="text-center">
 
-    @if (session()->has('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
 
     <main class="form-signin w-100 m-auto">
+        <img class="mb-4" src="/img/sigasik.png" alt="" width="150">
+        @if (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ session('error') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
+
+
         <form action="/login" method="POST">
             @csrf
-            <img class="mb-4" src="/img/sigasik.png" alt="" width="150">
-
-
             <div class="form-floating mb-2">
-                <input type="text" name="email" class="form-control @error('email') is-invalid @enderror"
-                    placeholder="Username" autocomplete="off" required value="{{ old('email') }}">
+                <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
+                    placeholder="Username" autocomplete="off" required value="{{ old('name') }}">
                 <label>Username</label>
-                @error('email')
+                @error('name')
                     <div class="invalid-feedback">
                         {{ $message }}
                     </div>
@@ -146,13 +147,18 @@
 
             <button class="w-100 btn btn-lg btn-me" type="submit">Sign in</button>
         </form>
+
         <p class="mt-5 mb-3 text-muted">
             <em>&copy; 2022 SIGASIK. <strong>All Right Reserved</strong></em>
         </p>
     </main>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

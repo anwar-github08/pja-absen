@@ -18,7 +18,7 @@ class LoginController extends Controller
     {
 
         $dataValid = $request->validate([
-            'email' => 'required',
+            'name' => 'required',
             'password' => 'required'
         ]);
 
@@ -29,5 +29,13 @@ class LoginController extends Controller
         }
 
         return back()->with('error', 'Gagal..!!!');
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

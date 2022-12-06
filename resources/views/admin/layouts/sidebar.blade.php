@@ -36,7 +36,14 @@
             </li> --}}
 
             <li class="nav-item">
-                <a class="nav-link" href="/" onclick="return confirm('ke halaman utama?')">Home User</a>
+                <a class="nav-link" href="/" onclick="return confirm('ke halaman utama..?')">Home User</a>
+            </li>
+            <li class="nav-item">
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button type="submit" class="nav-link border-0 bg-transparent"
+                        onclick="return confirm('logout..?')">Logout</button>
+                </form>
             </li>
         </ul>
     </div>

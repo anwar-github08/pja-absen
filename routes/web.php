@@ -47,6 +47,7 @@ Route::get('/kunjungan/{id_jabatan}', [KunjunganController::class, 'index']);
 
 
 
+
 // lokasi
 Route::get('/lokasi', function () {
 
@@ -69,60 +70,68 @@ Route::get('/lokasi', function () {
 
 
 
+// rute middleware guest->bisa diakses ketika belum login
+Route::middleware('guest')->group(function () {
 
-
-// admin
-Route::get('/admin', function () {
-    return view('admin.dashboard', [
-        'title' => 'Dashboard'
-    ]);
-});
-
-Route::get('/data_absen', function () {
-    return view('admin.data_absen', [
-        'title' => 'Data Absen'
-    ]);
-});
-
-Route::get('/data_kunjungan', function () {
-    return view('admin.data_kunjungan', [
-        'title' => 'Data Kunjungan'
-    ]);
-});
-
-Route::get('/karyawan', function () {
-    return view('admin.karyawan', [
-        'title' => 'Data Karyawan'
-    ]);
-});
-
-Route::get('/jabatan', function () {
-    return view('admin.jabatan', [
-        'title' => 'Data Jabatan'
-    ]);
-});
-
-Route::get('/akses_kunjungan', function () {
-    return view('admin.akses_kunjungan', [
-        'title' => 'Akses Kunjungan'
-    ]);
+    // login
+    Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+    Route::post('/login', [LoginController::class, 'auth']);
 });
 
 
-
-// Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
-Route::get('/detailAbsen/{id}', [AdminController::class, 'detailAbsen']);
-Route::get('/detailIzin/{id}', [AdminController::class, 'detailIzin']);
-Route::get('/detailKunjungan/{id}', [AdminController::class, 'detailKunjungan']);
-
-// export
-Route::get('/exportExcelAbsen/{tanggal}', [AdminController::class, 'exportExcelAbsen']);
-Route::get('/exportPdfAbsen/{tanggal}', [AdminController::class, 'exportPdfAbsen']);
-
-Route::get('/exportExcelKunjungan/{tanggal}', [AdminController::class, 'exportExcelKunjungan']);
-Route::get('/exportPdfKunjungan/{tanggal}', [AdminController::class, 'exportPdfKunjungan']);
+// rute middleware auth->bisa diakses ketika sudah login
+Route::middleware('auth')->group(function () {
 
 
-// login
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'auth']);
+    // admin
+    Route::get('/admin', function () {
+        return view('admin.dashboard', [
+            'title' => 'Dashboard'
+        ]);
+    });
+
+    Route::get('/data_absen', function () {
+        return view('admin.data_absen', [
+            'title' => 'Data Absen'
+        ]);
+    });
+
+    Route::get('/data_kunjungan', function () {
+        return view('admin.data_kunjungan', [
+            'title' => 'Data Kunjungan'
+        ]);
+    });
+
+    Route::get('/karyawan', function () {
+        return view('admin.karyawan', [
+            'title' => 'Data Karyawan'
+        ]);
+    });
+
+    Route::get('/jabatan', function () {
+        return view('admin.jabatan', [
+            'title' => 'Data Jabatan'
+        ]);
+    });
+
+    Route::get('/akses_kunjungan', function () {
+        return view('admin.akses_kunjungan', [
+            'title' => 'Akses Kunjungan'
+        ]);
+    });
+
+    // Route::get('showImage/{kategori}/{image}', [AdminController::class, 'showImage']);
+    Route::get('/detailAbsen/{id}', [AdminController::class, 'detailAbsen']);
+    Route::get('/detailIzin/{id}', [AdminController::class, 'detailIzin']);
+    Route::get('/detailKunjungan/{id}', [AdminController::class, 'detailKunjungan']);
+
+    // export
+    Route::get('/exportExcelAbsen/{tanggal}', [AdminController::class, 'exportExcelAbsen']);
+    Route::get('/exportPdfAbsen/{tanggal}', [AdminController::class, 'exportPdfAbsen']);
+
+    Route::get('/exportExcelKunjungan/{tanggal}', [AdminController::class, 'exportExcelKunjungan']);
+    Route::get('/exportPdfKunjungan/{tanggal}', [AdminController::class, 'exportPdfKunjungan']);
+
+    // logout
+    Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+});
