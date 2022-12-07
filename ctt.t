@@ -20,6 +20,7 @@ login untuk hak akses
 # export pdf dan excel
 # relasi jika data dihapus
 # * login untuk admin
+masalah karyawan admin
 fungsi hapus data pda admin
 
 /other/

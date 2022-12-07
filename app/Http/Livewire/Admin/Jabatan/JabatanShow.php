@@ -12,6 +12,7 @@ use App\Models\JabatanKunjungan;
 use App\Models\Karyawan;
 use App\Models\Kunjungan;
 use App\Models\Pulang;
+use App\Models\User;
 use Livewire\Component;
 
 class JabatanShow extends Component
@@ -40,6 +41,7 @@ class JabatanShow extends Component
         Jabatan::destroy($id);
         JabatanKunjungan::where('jabatan_id', $id)->delete();
         Karyawan::where('jabatan_id', $id)->delete();
+        User::where('jabatan_id', $id)->delete();
 
         Datang::where('karyawan_id', $id_karyawan->id)->delete();
         IsKeluar::where('karyawan_id', $id_karyawan->id)->delete();

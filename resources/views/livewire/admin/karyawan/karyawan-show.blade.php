@@ -12,6 +12,9 @@
                 <th>No</th>
                 <th>Karyawan</th>
                 <th>Jabatan</th>
+                <th>Username</th>
+                <th>Password</th>
+                <th>Status Admin</th>
                 <th>Aksi</th>
             </tr>
         </thead>
@@ -21,6 +24,18 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $karyawan->nama_karyawan }}</td>
                     <td>{{ $karyawan->jabatan->nama_jabatan }}</td>
+                    <td>{{ $karyawan->user->name }}</td>
+                    <td>{{ $karyawan->user->key }}</td>
+                    <td class="form-switch">
+                        @if ($karyawan->user->is_admin == 0)
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                wire:change='changeIsAdmin({{ $karyawan->user->id }},{{ $karyawan->user->is_admin }})'>
+                        @else
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"
+                                checked
+                                wire:change='changeIsAdmin({{ $karyawan->user->id }},{{ $karyawan->user->is_admin }})'>
+                        @endif
+                    </td>
                     <td>
                         <button class="btn btn-sm btn-danger"
                             onclick="return confirm('data yang berhubungan akan dihapus..!!') || event.stopImmediatePropagation()"

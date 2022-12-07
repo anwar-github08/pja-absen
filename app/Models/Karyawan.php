@@ -15,4 +15,9 @@ class Karyawan extends Model
     {
         return $this->belongsTo(Jabatan::class);
     }
+
+    public function user()
+    {
+        return $this->hasOne(User::class);
+    }
 }

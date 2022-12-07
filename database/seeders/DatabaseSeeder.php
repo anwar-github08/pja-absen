@@ -173,14 +173,20 @@ class DatabaseSeeder extends Seeder
         //     'id' => 6,
         //     'nama_jabatan' => 'Manager'
         // ]);
-        // Jabatan::create([
-        //     'id' => 7,
-        //     'nama_jabatan' => 'Auditor'
-        // ]);
-
+        Jabatan::create([
+            'id' => 1,
+            'nama_jabatan' => 'Administrasi'
+        ]);
+        Karyawan::create([
+            'id' => 1,
+            'jabatan_id' => 1,
+            'nama_karyawan' => 'admin',
+        ]);
         User::create([
+            'karyawan_id' => 1,
+            'jabatan_id' => 1,
             'name' => 'sigasik',
-            'email' => '',
+            'key' => 'admin',
             'password' => Hash::make('admin')
         ]);
     }
