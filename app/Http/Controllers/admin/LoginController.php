@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (Auth::attempt($dataValid)) {
             $request->session()->regenerate();
 
-            return redirect()->intended('/admin');
+            return redirect()->intended('/');
         }
 
         return back()->with('error', 'Gagal..!!!');

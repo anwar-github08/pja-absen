@@ -12,49 +12,23 @@ class KunjunganCreate extends Component
 {
     use WithFileUploads;
 
-    public $karyawan_id = '-';
+    public $karyawan_id;
     public $tanggal_kunjungan;
     public $jam_kunjungan;
     public $lokasi_kunjungan;
     public $foto_kunjungan;
-    public $id_jabatan;
 
-    public $karyawans;
-    public $iteration = 0;
-
-    public function mount($id_jabatan)
+    public function mount()
     {
-        $this->id_jabatan = $id_jabatan;
+        $this->tanggal_kunjungan = date('d-m-Y');
+        $this->jam_kunjungan = date('H:i:s');
+        $this->lokasi_kunjungan = '-235252, 23235';
+        $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 
 
     public function render()
     {
-        $this->tanggal_kunjungan = date('d-m-Y');
-        $this->jam_kunjungan = date('H:i:s');
-        $this->lokasi_kunjungan = '-235252, 23235';
-
-        // ambil id_karyawan semua
-        $karyawan_id = Karyawan::select('id')->where('jabatan_id', $this->id_jabatan)->get();
-        foreach ($karyawan_id as $id) {
-
-            $karyawan_id_array[] = $id->id;
-        }
-
-        // ambil id_karyawan yang sudah ada di tabel kunjungan pada tanggal sekarang
-        $karyawan_id_dipakai = Kunjungan::select('karyawan_id')->where('tanggal_kunjungan', date('Y-m-d'))->get();
-        foreach ($karyawan_id_dipakai as $key) {
-            $karyawan_id_dipakai_array[] = $key->karyawan_id;
-        }
-
-        // jika belum ada absen notyet = id karyawan
-        if (empty($karyawan_id_dipakai_array)) {
-            $this->karyawans = Karyawan::where('jabatan_id', $this->id_jabatan)->orderBy('nama_karyawan', 'asc')->get();
-        } else {
-            $notYetId = array_diff($karyawan_id_array, $karyawan_id_dipakai_array);
-            $this->karyawans = Karyawan::whereIn('id', $notYetId)->orderBy('nama_karyawan', 'asc')->get();
-        }
-
         return view('livewire.kunjungan.kunjungan-create');
     }
 
@@ -93,8 +67,6 @@ class KunjunganCreate extends Component
         $this->emit('eTriggerKunjunganShow');
         $this->dispatchBrowserEvent('triggerJs');
 
-        $this->iteration++;
-        $this->karyawan_id = '-';
         $this->foto_kunjungan = null;
     }
 }

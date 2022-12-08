@@ -21,38 +21,16 @@ class PulangCreate extends Component
     public $lokasi_pulang;
     public $foto_pulang;
 
-    public $karyawans;
-    public $iteration = 0;
-
-    public function render()
+    public function mount()
     {
-
         $this->tanggal_pulang = date('d-m-Y');
         $this->jam_pulang = date('H:i:s');
         $this->lokasi_pulang = '-235252, 23235';
+        $this->karyawan_id =  auth()->user()->karyawan_id;
+    }
 
-        // ambil id_karyawan semua
-        $karyawan_id = Karyawan::select('id')->get();
-        foreach ($karyawan_id as $id) {
-
-            $karyawan_id_array[] = $id->id;
-        }
-
-        // ambil id_karyawan yang sudah ada di tabel datang pada tanggal sekarang
-        $karyawan_id_dipakai = Pulang::select('karyawan_id')->where('tanggal_pulang', date('Y-m-d'))->get();
-        foreach ($karyawan_id_dipakai as $key) {
-            $karyawan_id_dipakai_array[] = $key->karyawan_id;
-        }
-
-        // jika belum ada absen notyet = id karyawan
-        if (empty($karyawan_id_dipakai_array)) {
-            $this->karyawans = Karyawan::orderBy('nama_karyawan', 'asc')->get();
-        } else {
-            $notYetId = array_diff($karyawan_id_array, $karyawan_id_dipakai_array);
-            $this->karyawans = Karyawan::whereIn('id', $notYetId)->orderBy('nama_karyawan', 'asc')->get();
-        }
-
-
+    public function render()
+    {
         return view('livewire.pulang.pulang-create');
     }
 
@@ -101,10 +79,6 @@ class PulangCreate extends Component
         $this->emit('eTriggerPulangShow');
         $this->dispatchBrowserEvent('triggerJs');
 
-        $this->iteration++;
-        $this->karyawan_id = '-';
         $this->foto_pulang = null;
-
-        // return redirect()->to('/');
     }
 }

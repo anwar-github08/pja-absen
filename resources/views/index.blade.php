@@ -91,6 +91,14 @@
         height: 100%;
         opacity: .80;
     }
+
+    .nama_karyawan {
+
+        font-size: 90%;
+        color: rgb(47, 135, 108);
+        font-style: italic;
+        font-weight: bold;
+    }
 </style>
 
 <body onload="loader()">
@@ -104,6 +112,14 @@
         <a href="/admin">
             <img src="/img/admin.png" width="70">
         </a>
+    </div>
+    <div class="mb-3 text-center">
+        {{-- <h6 class="nama_karyawan">{{ strtoupper($nama_karyawan) }}</h6> --}}
+        <form action="/logout" method="POST">
+            @csrf
+            <button type="submit" class="nama_karyawan border-0 bg-transparent"
+                onclick="return confirm('logout..?')">{{ strtoupper($nama_karyawan) }}</button>
+        </form>
     </div>
 
     <div class="row text-center">
@@ -126,22 +142,8 @@
         </div>
 
         <div class="col-md-6 col-sm-6">
-            <div class="dropdown">
-                <a class="btn btn-kunjungan btn-lg dropdown-toggle" href="#" role="button"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Kunjungan
-                </a>
-
-                <ul class="dropdown-menu">
-                    @foreach ($jabatans as $jabatan)
-                        <li><a class="dropdown-item"
-                                href="/kunjungan/{{ $jabatan->jabatan->id }}">{{ $jabatan->jabatan->nama_jabatan }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
+            <a href="/kunjungan" class="btn btn-kunjungan btn-lg">Kunjungan</a>
         </div>
-
     </div>
 
     <div class="gambar mt-5">

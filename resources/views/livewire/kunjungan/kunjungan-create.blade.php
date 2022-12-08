@@ -1,7 +1,7 @@
 <div>
     <div class="row d-flex justify-content-center">
         <div class="form">
-
+            {{-- 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Tanggal</label>
                 <div class="col-sm-10">
@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Foto</label>
@@ -59,7 +59,7 @@
             </div>
 
             <div class="row">
-                @if ($foto_kunjungan == null or $karyawan_id == '-')
+                @if ($foto_kunjungan == null)
                     <button class="btn btn-two" wire:click='storeKunjungan' disabled>Absen Kunjungan</button>
                 @else
                     <button class="btn btn-two" wire:click='storeKunjungan'>Absen Kunjungan</button>
@@ -69,7 +69,7 @@
         </div>
     </div>
 </div>
-@push('script')
+{{-- @push('script')
     <script>
         $(document).ready(function() {
             $('.form-select').select2({
@@ -93,4 +93,4 @@
             })
         })
     </script>
-@endpush
+@endpush --}}

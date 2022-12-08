@@ -38,7 +38,11 @@
             </ul>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a href="/admin" class="nav-link">Admin</a>
+                    <form action="/logout" method="POST">
+                        @csrf
+                        <button type="submit" class="nav-link border-0 bg-transparent"
+                            onclick="return confirm('logout..?')">{{ strtoupper(auth()->user()->name) }}</button>
+                    </form>
                 </li>
             </ul>
         </div>

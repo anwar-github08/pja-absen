@@ -10,7 +10,7 @@ use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\LoginController;
 use App\Models\JabatanKunjungan;
-
+use App\Models\Karyawan;
 use Stevebauman\Location\Facades\Location;
 /*
 |--------------------------------------------------------------------------
@@ -23,27 +23,14 @@ use Stevebauman\Location\Facades\Location;
 |
 */
 
-Route::get('/', function () {
-    return view('index', [
-        'title' => 'SIGASIK',
-        'jabatans' => JabatanKunjungan::with('jabatan')->get()
-    ]);
-});
 
-Route::get('/home', function ($id) {
-    return view('home', [
-        'title' => 'SIGASIK',
-        'id_jabatan' => $id,
-        'jabatans' => Jabatan::all()
-    ]);
-});
-
-Route::get('/datang', [DatangController::class, 'index']);
-Route::get('/pulang', [PulangController::class, 'index']);
-Route::get('/is_keluar', [IstirahatController::class, 'isKeluar']);
-Route::get('/is_masuk', [IstirahatController::class, 'isMasuk']);
-Route::get('/izin', [IzinController::class, 'index']);
-Route::get('/kunjungan/{id_jabatan}', [KunjunganController::class, 'index']);
+// Route::get('/home', function ($id) {
+//     return view('home', [
+//         'title' => 'SIGASIK',
+//         'id_jabatan' => $id,
+//         'jabatans' => Jabatan::all()
+//     ]);
+// });
 
 
 
@@ -82,6 +69,33 @@ Route::middleware('guest')->group(function () {
 // rute middleware auth->bisa diakses ketika sudah login
 Route::middleware('auth')->group(function () {
 
+    Route::get('/', function () {
+        $karyawan = Karyawan::select('nama_karyawan')->where('id', auth()->user()->karyawan_id)->first();
+        return view('index', [
+            'title' => 'SIGASIK',
+            'nama_karyawan' => $karyawan->nama_karyawan
+        ]);
+    });
+
+    Route::get('/datang', [DatangController::class, 'index']);
+    Route::get('/pulang', [PulangController::class, 'index']);
+    Route::get('/is_keluar', [IstirahatController::class, 'isKeluar']);
+    Route::get('/is_masuk', [IstirahatController::class, 'isMasuk']);
+    Route::get('/izin', [IzinController::class, 'index']);
+
+    // logout
+    Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+});
+
+
+// rute middleware kunjungan->bisa akses kunjungan
+Route::middleware('kunjungan')->group(function () {
+    Route::get('/kunjungan', [KunjunganController::class, 'index']);
+});
+
+
+// rute middleware admin->bisa mengakses admin
+Route::middleware('admin')->group(function () {
 
     // admin
     Route::get('/admin', function () {
@@ -131,7 +145,4 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/exportExcelKunjungan/{tanggal}', [AdminController::class, 'exportExcelKunjungan']);
     Route::get('/exportPdfKunjungan/{tanggal}', [AdminController::class, 'exportPdfKunjungan']);
-
-    // logout
-    Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 });

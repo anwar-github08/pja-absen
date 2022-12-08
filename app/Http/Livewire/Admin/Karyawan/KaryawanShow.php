@@ -18,13 +18,9 @@ class KaryawanShow extends Component
 
     public $karyawans;
 
-    public function mount()
-    {
-        $this->karyawans = Karyawan::with('jabatan')->with('user')->orderby('nama_karyawan', 'asc')->get();
-    }
-
     public function render()
     {
+        $this->karyawans = Karyawan::with('jabatan')->with('user')->orderby('nama_karyawan', 'asc')->get();
         return view('livewire.admin.karyawan.karyawan-show');
     }
 
@@ -64,7 +60,6 @@ class KaryawanShow extends Component
         Kunjungan::where('karyawan_id', $id)->delete();
         Absen::where('karyawan_id', $id)->delete();
 
-        $this->emitSelf('refresh');
         $this->dispatchBrowserEvent('triggerJs');
     }
 }

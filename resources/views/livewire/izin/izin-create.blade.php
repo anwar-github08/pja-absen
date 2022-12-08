@@ -2,7 +2,7 @@
     <div class="row d-flex justify-content-center">
         <div class="form">
 
-            <div class="row mb-3">
+            {{-- <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Tanggal</label>
                 <div class="col-sm-10">
                     <input type="text" wire:model="tanggal_izin" class="form-control" disabled>
@@ -33,7 +33,7 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Keperluan</label>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="row">
-                @if ($karyawan_id == '-' or $jam_izin == null or $keperluan == '')
+                @if ($keperluan == '')
                     <button class="btn btn-two" wire:click='storeIzin' disabled>Izin</button>
                 @else
                     <button class="btn btn-two" wire:click='storeIzin'>Izin</button>
@@ -59,7 +59,7 @@
         </div>
     </div>
 </div>
-@push('script')
+{{-- @push('script')
     <script>
         $(document).ready(function() {
             $('.form-select').select2({
@@ -83,4 +83,4 @@
             })
         })
     </script>
-@endpush
+@endpush --}}

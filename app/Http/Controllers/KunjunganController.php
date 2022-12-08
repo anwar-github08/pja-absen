@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JabatanKunjungan;
+use App\Models\Kunjungan;
 use Illuminate\Http\Request;
 
 class KunjunganController extends Controller
 {
-    public function index($id_jabatan)
+    public function index()
     {
+
         return view('kunjungan', [
 
             'title' => 'Kunjungan',
-            'id_jabatan' => $id_jabatan
         ]);
     }
 }

@@ -12,7 +12,8 @@
 /user view/
 # datatables
 # loading selama page diload
-login untuk hak akses
+# login untuk hak akses
+ketika sudah absen, kasih alert sudah absen
 
 /admin view/
 # datatables
@@ -20,7 +21,9 @@ login untuk hak akses
 # export pdf dan excel
 # relasi jika data dihapus
 # * login untuk admin
-masalah karyawan admin
+# masalah karyawan admin
+# hak akses untuk login admin/authorization
+# hak akses untuk akses kunjungan
 fungsi hapus data pda admin
 
 /other/

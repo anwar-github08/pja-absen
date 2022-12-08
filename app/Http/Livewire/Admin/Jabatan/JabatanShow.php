@@ -43,12 +43,17 @@ class JabatanShow extends Component
         Karyawan::where('jabatan_id', $id)->delete();
         User::where('jabatan_id', $id)->delete();
 
-        Datang::where('karyawan_id', $id_karyawan->id)->delete();
-        IsKeluar::where('karyawan_id', $id_karyawan->id)->delete();
-        IsMasuk::where('karyawan_id', $id_karyawan->id)->delete();
-        Pulang::where('karyawan_id', $id_karyawan->id)->delete();
-        Izin::where('karyawan_id', $id_karyawan->id)->delete();
-        Kunjungan::where('karyawan_id', $id_karyawan->id)->delete();
-        Absen::where('karyawan_id', $id_karyawan->id)->delete();
+        // jika ada karyawan
+        if ($id_karyawan !== null) {
+            Datang::where('karyawan_id', $id_karyawan->id)->delete();
+            IsKeluar::where('karyawan_id', $id_karyawan->id)->delete();
+            IsMasuk::where('karyawan_id', $id_karyawan->id)->delete();
+            Pulang::where('karyawan_id', $id_karyawan->id)->delete();
+            Izin::where('karyawan_id', $id_karyawan->id)->delete();
+            Kunjungan::where('karyawan_id', $id_karyawan->id)->delete();
+            Absen::where('karyawan_id', $id_karyawan->id)->delete();
+        }
+
+        $this->dispatchBrowserEvent('triggerJs');
     }
 }
