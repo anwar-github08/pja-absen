@@ -13,7 +13,7 @@
 # datatables
 # loading selama page diload
 # login untuk hak akses
-ketika sudah absen, kasih alert sudah absen
+# ketika sudah absen, kasih alert sudah absen
 
 /admin view/
 # datatables
@@ -24,7 +24,8 @@ ketika sudah absen, kasih alert sudah absen
 # masalah karyawan admin
 # hak akses untuk login admin/authorization
 # hak akses untuk akses kunjungan
-fungsi hapus data pda admin
+# fungsi hapus data pda admin->unlink image
+hapus data kunjungan+unlink
 
 /other/
 lokasi kurang akurat

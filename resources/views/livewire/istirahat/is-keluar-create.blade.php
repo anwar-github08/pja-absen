@@ -42,16 +42,22 @@
                         placeholder="jam keluar">
                 </div>
             </div> --}}
-
-            <div class="text-center">
-                <div wire:loading>
-                    <h6>Loading...</h6>
+            @if ($isAbsen == true)
+                <div class="alert alert-success text-center" role="alert">
+                    <img src="/img/cat.png" class="img-fluid">
+                    <strong>Sudah Absen</strong>
                 </div>
-            </div>
+            @else
+                <div class="text-center">
+                    <div wire:loading>
+                        <h6>Loading...</h6>
+                    </div>
+                </div>
 
-            <div class="row">
-                <button class="btn btn-two" wire:click='storeIsKeluar'>Absen Istirahat Keluar</button>
-            </div>
+                <div class="row">
+                    <button class="btn btn-two" wire:click='storeIsKeluar'>Absen Istirahat Keluar</button>
+                </div>
+            @endif
 
         </div>
     </div>

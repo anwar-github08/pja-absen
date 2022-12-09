@@ -16,6 +16,8 @@ class IsMasukCreate extends Component
     public $jam_is_masuk;
     public $lokasi_is_masuk;
 
+    public $isAbsen = false;
+
     public function mount()
     {
         $this->tanggal_is_masuk = date('d-m-Y');
@@ -26,6 +28,12 @@ class IsMasukCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $isMasuk = IsMasuk::select('id')->where('tanggal_is_masuk', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($isMasuk !== null) {
+
+            $this->isAbsen = true;
+        }
 
         return view('livewire.istirahat.is-masuk-create');
     }

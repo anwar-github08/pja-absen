@@ -18,6 +18,8 @@ class KunjunganCreate extends Component
     public $lokasi_kunjungan;
     public $foto_kunjungan;
 
+    public $isAbsen = false;
+
     public function mount()
     {
         $this->tanggal_kunjungan = date('d-m-Y');
@@ -29,6 +31,13 @@ class KunjunganCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $kunjungan = Kunjungan::select('id')->where('tanggal_kunjungan', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($kunjungan !== null) {
+
+            $this->isAbsen = true;
+        }
+
         return view('livewire.kunjungan.kunjungan-create');
     }
 

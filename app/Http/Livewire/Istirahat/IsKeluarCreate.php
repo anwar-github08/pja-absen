@@ -17,6 +17,7 @@ class IsKeluarCreate extends Component
     public $lokasi_is_keluar;
 
     public $karyawans;
+    public $isAbsen = false;
 
     public function mount()
     {
@@ -28,6 +29,12 @@ class IsKeluarCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $isKeluar = IsKeluar::select('id')->where('tanggal_is_keluar', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($isKeluar !== null) {
+
+            $this->isAbsen = true;
+        }
 
         return view('livewire.istirahat.is-keluar-create');
     }

@@ -35,36 +35,43 @@
                 </div>
             </div> --}}
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Foto</label>
-                <div class="col-sm-10">
-                    <input type="file" wire:model="foto_datang" class="form-control">
+            @if ($isAbsen == true)
+                <div class="alert alert-success text-center" role="alert">
+                    <img src="/img/cat.png" class="img-fluid">
+                    <strong>Sudah Absen</strong>
                 </div>
-            </div>
+            @else
+                <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Foto</label>
+                    <div class="col-sm-10">
+                        <input type="file" wire:model="foto_datang" class="form-control">
+                    </div>
+                </div>
 
-            @if ($foto_datang)
-                <div class="row mb-3 text-center">
-                    @error('foto_datang')
-                        <i>file harus gambar</i>
+                @if ($foto_datang)
+                    <div class="row mb-3 text-center">
+                        @error('foto_datang')
+                            <i>file harus gambar</i>
+                        @else
+                            <img src="{{ $foto_datang->temporaryUrl() }}" class="img-fluid col-sm-3">
+                        @enderror
+                    </div>
+                @endif
+
+                <div class="text-center">
+                    <div wire:loading>
+                        <h6>Loading...</h6>
+                    </div>
+                </div>
+
+                <div class="row">
+                    @if ($foto_datang == null)
+                        <button class="btn btn-two" wire:click='storeDatang' disabled>Absen Datang</button>
                     @else
-                        <img src="{{ $foto_datang->temporaryUrl() }}" class="img-fluid col-sm-3">
-                    @enderror
+                        <button class="btn btn-two" wire:click='storeDatang'>Absen Datang</button>
+                    @endif
                 </div>
             @endif
-
-            <div class="text-center">
-                <div wire:loading>
-                    <h6>Loading...</h6>
-                </div>
-            </div>
-
-            <div class="row">
-                @if ($foto_datang == null)
-                    <button class="btn btn-two" wire:click='storeDatang' disabled>Absen Datang</button>
-                @else
-                    <button class="btn btn-two" wire:click='storeDatang'>Absen Datang</button>
-                @endif
-            </div>
 
         </div>
     </div>

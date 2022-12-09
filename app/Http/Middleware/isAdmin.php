@@ -18,7 +18,7 @@ class isAdmin
     {
         // jika belum login atau login tapi tidak admin, maka arahkan ke home
         if (!auth()->check() || !auth()->user()->is_admin) {
-            return redirect()->intended('/');
+            return back()->with('error', 'Tidak diizinkan..!!');
         }
         return $next($request);
     }

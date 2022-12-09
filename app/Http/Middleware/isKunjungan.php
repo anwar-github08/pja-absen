@@ -25,7 +25,7 @@ class isKunjungan
         // jika belum login atau login tapi jabtan_id tidak sama dengan id_jabatan_kunjungan, maka alihkan home
 
         if (!auth()->check()  || !in_array(auth()->user()->jabatan_id, $idJabatanKunjungan)) {
-            return redirect()->intended('/');
+            return back()->with('error', 'Tidak diizinkan..!!');
         }
         return $next($request);
     }

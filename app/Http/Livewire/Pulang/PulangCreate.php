@@ -21,6 +21,8 @@ class PulangCreate extends Component
     public $lokasi_pulang;
     public $foto_pulang;
 
+    public $isAbsen = false;
+
     public function mount()
     {
         $this->tanggal_pulang = date('d-m-Y');
@@ -31,6 +33,13 @@ class PulangCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $pulang = Pulang::select('id')->where('tanggal_pulang', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($pulang !== null) {
+
+            $this->isAbsen = true;
+        }
+
         return view('livewire.pulang.pulang-create');
     }
 

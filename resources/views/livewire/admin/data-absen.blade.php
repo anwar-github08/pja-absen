@@ -70,6 +70,7 @@
     @if (count($absens) !== 0)
         <a href="/exportExcelAbsen/{{ $tanggal }}" class="btn btn-sm btn-success mt-3">Export Excel</a>
         <a href="/exportPdfAbsen/{{ $tanggal }}" class="btn btn-sm btn-info mt-3">Export PDF</a>
+        <button class="btn btn-danger btn-sm mt-3" wire:click='deleteData'>Hapus Data</button>
     @endif
 </div>
 

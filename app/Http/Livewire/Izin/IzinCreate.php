@@ -17,6 +17,8 @@ class IzinCreate extends Component
     public $lokasi_izin;
     public $keperluan = '';
 
+    public $isAbsen = false;
+
     public function mount()
     {
         $this->tanggal_izin = date('d-m-Y');
@@ -27,6 +29,12 @@ class IzinCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $izin = Izin::select('id')->where('tanggal_izin', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($izin !== null) {
+
+            $this->isAbsen = true;
+        }
 
         return view('livewire.izin.izin-create');
     }

@@ -2,8 +2,14 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Models\Izin;
 use App\Models\Absen;
+use App\Models\Datang;
+use App\Models\Pulang;
+use App\Models\IsMasuk;
 use Livewire\Component;
+use App\Models\IsKeluar;
+use Illuminate\Support\Facades\Storage;
 
 class DataAbsen extends Component
 {
@@ -35,6 +41,49 @@ class DataAbsen extends Component
             $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
         }
 
+        $this->dispatchBrowserEvent('triggerJs');
+    }
+
+    public function deleteData()
+    {
+
+        // ambil foto dan hapus
+        foreach ($this->absens as $absen) {
+            $foto_datang[] = $absen->datang->foto_datang;
+            $foto_pulang[] = $absen->pulang->foto_pulang;
+        }
+
+        for ($i = 0; $i < count($foto_datang); $i++) {
+            unlink('storage/foto_datang/' . $foto_datang[$i]);
+        }
+        for ($i = 0; $i < count($foto_pulang); $i++) {
+            unlink('storage/foto_pulang/' . $foto_pulang[$i]);
+        }
+
+
+        $tanggal = explode(' ', $this->tanggal);
+
+        if (count($tanggal) == 1) {
+            Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->delete();
+            Datang::where('tanggal_datang', date('Y-m-d', strtotime($tanggal[0])))->delete();
+            IsKeluar::where('tanggal_is_keluar', date('Y-m-d', strtotime($tanggal[0])))->delete();
+            IsMasuk::where('tanggal_is_masuk', date('Y-m-d', strtotime($tanggal[0])))->delete();
+            Pulang::where('tanggal_pulang', date('Y-m-d', strtotime($tanggal[0])))->delete();
+            Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->delete();
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->delete();
+            Datang::whereBetween('tanggal_datang', [$tanggalAwal, $tanggalAkhir])->delete();
+            IsKeluar::whereBetween('tanggal_is_keluar', [$tanggalAwal, $tanggalAkhir])->delete();
+            IsMasuk::whereBetween('tanggal_is_masuk', [$tanggalAwal, $tanggalAkhir])->delete();
+            Pulang::whereBetween('tanggal_pulang', [$tanggalAwal, $tanggalAkhir])->delete();
+            Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->delete();
+        }
+
+        $this->showData();
         $this->dispatchBrowserEvent('triggerJs');
     }
 }

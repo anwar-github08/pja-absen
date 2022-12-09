@@ -20,6 +20,8 @@ class DatangCreate extends Component
     public $lokasi_datang;
     public $foto_datang;
 
+    public $isAbsen = false;
+
     // public $karyawans;
     // public $iteration = 0;
 
@@ -33,6 +35,12 @@ class DatangCreate extends Component
 
     public function render()
     {
+        // jika sudah absen, isAbsen true
+        $datang = Datang::select('id')->where('tanggal_datang', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        if ($datang !== null) {
+
+            $this->isAbsen = true;
+        }
 
         // // ambil id_karyawan semua
         // $karyawan_id = Karyawan::select('id')->get();

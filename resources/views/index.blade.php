@@ -146,6 +146,15 @@
         </div>
     </div>
 
+    @if (session()->has('error'))
+        <div class="mt-3">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{ session('error') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    @endif
+
     <div class="gambar mt-5">
         <img src="/img/sigasik.jpg" class="img-fluid" alt="" width="1500">
     </div>
