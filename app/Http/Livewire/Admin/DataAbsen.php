@@ -9,7 +9,6 @@ use App\Models\Pulang;
 use App\Models\IsMasuk;
 use Livewire\Component;
 use App\Models\IsKeluar;
-use Illuminate\Support\Facades\Storage;
 
 class DataAbsen extends Component
 {
@@ -46,6 +45,7 @@ class DataAbsen extends Component
 
     public function deleteData()
     {
+        error_reporting(0);
 
         // ambil foto dan hapus
         foreach ($this->absens as $absen) {

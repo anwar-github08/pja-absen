@@ -37,4 +37,35 @@ class DataKunjungan extends Component
 
         $this->dispatchBrowserEvent('triggerJs');
     }
+
+    public function deleteData()
+    {
+
+        error_reporting(0);
+
+        // ambil foto dan hapus
+        foreach ($this->kunjungans as $kunjungan) {
+            $foto_kunjungan[] = $kunjungan->foto_kunjungan;
+        }
+
+        for ($i = 0; $i < count($foto_kunjungan); $i++) {
+            unlink('storage/foto_kunjungan/' . $foto_kunjungan[$i]);
+        }
+
+
+        $tanggal = explode(' ', $this->tanggal);
+
+        if (count($tanggal) == 1) {
+            Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->delete();
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->delete();
+        }
+
+        $this->showData();
+        $this->dispatchBrowserEvent('triggerJs');
+    }
 }

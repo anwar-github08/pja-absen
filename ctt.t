@@ -25,7 +25,8 @@
 # hak akses untuk login admin/authorization
 # hak akses untuk akses kunjungan
 # fungsi hapus data pda admin->unlink image
-hapus data kunjungan+unlink
+# hapus data kunjungan+unlink
+# kasih error reporting pada hapus absen
 
 /other/
 lokasi kurang akurat
