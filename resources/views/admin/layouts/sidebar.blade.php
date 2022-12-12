@@ -13,6 +13,10 @@
                     href="/data_kunjungan">Data Kunjungan</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ ($title == 'Data Izin') | ($title == 'Detail Izin') ? 'active' : '' }}"
+                    href="/data_izin">Data Izin</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ $title == 'Data Jabatan' ? 'active' : '' }}" href="/jabatan">Master
                     Jabatan</a>
             </li>

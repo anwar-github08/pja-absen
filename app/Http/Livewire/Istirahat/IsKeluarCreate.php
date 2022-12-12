@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Istirahat;
 use App\Models\Absen;
 use Livewire\Component;
 use App\Models\IsKeluar;
-use App\Models\Karyawan;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -21,9 +21,12 @@ class IsKeluarCreate extends Component
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_is_keluar = date('d-m-Y');
         $this->jam_is_keluar = date('H:i:s');
-        $this->lokasi_is_keluar = '-235252, 23235';
+        $this->lokasi_is_keluar = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 

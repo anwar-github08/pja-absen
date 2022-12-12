@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Izin;
 use App\Models\Izin;
 use App\Models\Absen;
 use Livewire\Component;
-use App\Models\Karyawan;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -17,24 +17,27 @@ class IzinCreate extends Component
     public $lokasi_izin;
     public $keperluan = '';
 
-    public $isAbsen = false;
+    // public $isAbsen = false;
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_izin = date('d-m-Y');
         $this->jam_izin = date('H:i:s');
-        $this->lokasi_izin = '-235252, 23235';
+        $this->lokasi_izin = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 
     public function render()
     {
         // jika sudah absen, isAbsen true
-        $izin = Izin::select('id')->where('tanggal_izin', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
-        if ($izin !== null) {
+        // $izin = Izin::select('id')->where('tanggal_izin', date('Y-m-d'))->where('karyawan_id', $this->karyawan_id)->first();
+        // if ($izin !== null) {
 
-            $this->isAbsen = true;
-        }
+        //     $this->isAbsen = true;
+        // }
 
         return view('livewire.izin.izin-create');
     }

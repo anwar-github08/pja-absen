@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Jabatan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IzinController;
 use App\Http\Controllers\DatangController;
@@ -9,9 +8,8 @@ use App\Http\Controllers\IstirahatController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\LoginController;
-use App\Models\JabatanKunjungan;
+use App\Http\Controllers\LokasiController;
 use App\Models\Karyawan;
-use Stevebauman\Location\Facades\Location;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,30 +30,8 @@ use Stevebauman\Location\Facades\Location;
 //     ]);
 // });
 
-
-
-
 // lokasi
-Route::get('/lokasi', function () {
-
-    // get ip public
-    $ip = file_get_contents("https://api.ipify.org");
-
-    // get location geoplugin
-    $geoplugin = file_get_contents("http://www.geoplugin.net/php.gp?id=" . $ip);
-
-    // get location torran geoapi
-    $torran = geoip()->getLocation($ip);
-
-    // get location stevebauman
-    if ($position = Location::get($ip)) {
-        dd($position, $position->cityName, $position->latitude . ',' . $position->longitude);
-    } else {
-        dd('gagal');
-    }
-});
-
-
+Route::get('/lokasi', [LokasiController::class, 'index']);
 
 // rute middleware guest->bisa diakses ketika belum login
 Route::middleware('guest')->group(function () {

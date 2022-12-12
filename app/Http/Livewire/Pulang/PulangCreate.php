@@ -7,6 +7,7 @@ use App\Models\Pulang;
 use Livewire\Component;
 use App\Models\Karyawan;
 use Livewire\WithFileUploads;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -25,9 +26,12 @@ class PulangCreate extends Component
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_pulang = date('d-m-Y');
         $this->jam_pulang = date('H:i:s');
-        $this->lokasi_pulang = '-235252, 23235';
+        $this->lokasi_pulang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 

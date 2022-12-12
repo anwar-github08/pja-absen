@@ -3,9 +3,9 @@
 namespace App\Http\Livewire\Kunjungan;
 
 use Livewire\Component;
-use App\Models\Karyawan;
 use App\Models\Kunjungan;
 use Livewire\WithFileUploads;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 class KunjunganCreate extends Component
@@ -22,9 +22,12 @@ class KunjunganCreate extends Component
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_kunjungan = date('d-m-Y');
         $this->jam_kunjungan = date('H:i:s');
-        $this->lokasi_kunjungan = '-235252, 23235';
+        $this->lokasi_kunjungan = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 

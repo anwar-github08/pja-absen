@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Datang;
 
+use App\Http\Controllers\LokasiController;
 use App\Models\Absen;
 use App\Models\Datang;
-use App\Models\Karyawan;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -27,9 +27,12 @@ class DatangCreate extends Component
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_datang = date('d-m-Y');
         $this->jam_datang = date('H:i:s');
-        $this->lokasi_datang = '-235252, 23235';
+        $this->lokasi_datang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 

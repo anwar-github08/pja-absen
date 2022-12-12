@@ -24,7 +24,7 @@
                 <th>Foto Datang</th>
                 <th>Foto Pulang</th>
                 <th>Detail</th>
-                <th>Izin</th>
+                {{-- <th>Izin</th> --}}
             </tr>
         </thead>
         <tbody>
@@ -56,13 +56,13 @@
                     </td>
                     <td><a href="detailAbsen/{{ $absen->id }}" target="blank" class="btn btn-info btn-sm">Detail</a>
                     </td>
-                    <td>
+                    {{-- <td>
                         @if ($absen->izin->jam_izin == null)
                             -
                         @else
                             <a href="/detailIzin/{{ $absen->izin->id }}" class="btn btn-sm btn-info">Lihat izin</a>
                         @endif
-                    </td>
+                    </td> --}}
                 </tr>
             @endforeach
         </tbody>

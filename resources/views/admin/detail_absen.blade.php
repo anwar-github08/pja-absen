@@ -85,10 +85,10 @@
                     </div>
 
                     {{-- izin --}}
-                    @if ($absen->izin->jam_izin == null)
+                    {{-- @if ($absen->izin->jam_izin == null)
                     @else
                         <a href="/detailIzin/{{ $absen->izin->id }}" class="btn btn-info">Lihat izin</a>
-                    @endif
+                    @endif --}}
                 </div>
 
 

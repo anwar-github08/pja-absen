@@ -27,6 +27,7 @@
 # fungsi hapus data pda admin->unlink image
 # hapus data kunjungan+unlink
 # kasih error reporting pada hapus absen
+membuat data izin,export dan hapus
 
 /other/
 lokasi kurang akurat

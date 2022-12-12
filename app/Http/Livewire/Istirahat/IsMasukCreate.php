@@ -5,7 +5,7 @@ namespace App\Http\Livewire\Istirahat;
 use App\Models\Absen;
 use App\Models\IsMasuk;
 use Livewire\Component;
-use App\Models\Karyawan;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -20,9 +20,12 @@ class IsMasukCreate extends Component
 
     public function mount()
     {
+        $lokasi = new LokasiController;
+        $lokasi = $lokasi->index();
+
         $this->tanggal_is_masuk = date('d-m-Y');
         $this->jam_is_masuk = date('H:i:s');
-        $this->lokasi_is_masuk = '-235252, 23235';
+        $this->lokasi_is_masuk = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
     }
 
