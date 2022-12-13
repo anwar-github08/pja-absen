@@ -145,6 +145,9 @@
             <a href="/kunjungan" class="btn btn-kunjungan btn-lg">Kunjungan</a>
         </div>
     </div>
+    <div class="text-dark">
+        {{ $jama / 60 }}
+    </div>
 
     @if (session()->has('error'))
         <div class="mt-3">

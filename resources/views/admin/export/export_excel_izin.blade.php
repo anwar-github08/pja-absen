@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/force-download');
-header('Content-Disposition: attachment; filename=DataKunjungan.xls');
+header('Content-Disposition: attachment; filename=DataIzin.xls');
 header('Content-Transfer-Encoding: BINARY');
 ?>
 
@@ -26,7 +26,7 @@ header('Content-Transfer-Encoding: BINARY');
 
 <body>
     <div style="text-align: center">
-        <h2>Data Absen Kunjungan</h2>
+        <h2>Data Izin</h2>
         <h3>Periode : {{ $tanggal }}</h3>
     </div>
     <table border="1" style="width: 100%">
@@ -36,18 +36,17 @@ header('Content-Transfer-Encoding: BINARY');
                 <th>Karyawan</th>
                 <th>Tanggal</th>
                 <th>Jam</th>
-                <th>Foto Kunjungan</th>
+                <th>Keperluan</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($kunjungans as $kunjungan)
+            @foreach ($izins as $izin)
                 <tr style="height: 100px">
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $kunjungan->karyawan->nama_karyawan }}</td>
-                    <td>{{ date('d-m-Y', strtotime($kunjungan->tanggal_kunjungan)) }}</td>
-                    <td>{{ $kunjungan->jam_kunjungan }}</td>
-                    <td><img src="F:\laravel\pja-absen\storage\app\public\foto_kunjungan\{{ $kunjungan->foto_kunjungan }}"
-                            alt="foto_kunjungan" width="100"></td>
+                    <td>{{ $izin->karyawan->nama_karyawan }}</td>
+                    <td>{{ date('d-m-Y', strtotime($izin->tanggal_izin)) }}</td>
+                    <td>{{ $izin->jam_izin }}</td>
+                    <td>{{ $izin->keperluan }}</td>
                 </tr>
             @endforeach
         </tbody>

@@ -31,10 +31,10 @@ class Absen extends Model
     {
         return $this->belongsTo(Pulang::class)->withDefault();
     }
-    public function izin()
-    {
-        return $this->belongsTo(Izin::class)->withDefault();
-    }
+    // public function izin()
+    // {
+    //     return $this->belongsTo(Izin::class)->withDefault();
+    // }
 
     // fungsi with default untuk megizinkan agar id yang tidak ada bisa ditampikan
 }

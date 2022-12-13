@@ -20,7 +20,7 @@
 
 <body>
     <div style="text-align: center">
-        <h2>Data Absen</h2>
+        <h2>Data Absen Kunjungan</h2>
         <h3>Periode : {{ $tanggal }}</h3>
     </div>
     <table border="1" style="width: 100%">

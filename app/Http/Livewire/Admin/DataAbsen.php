@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Admin;
 
-use App\Models\Izin;
 use App\Models\Absen;
 use App\Models\Datang;
 use App\Models\Pulang;
@@ -18,7 +17,7 @@ class DataAbsen extends Component
     public function mount()
     {
         $this->tanggal = date('Y-m-d');
-        $this->absens = Absen::where('tanggal_absen', date('Y-m-d'))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
+        $this->absens = Absen::where('tanggal_absen', date('Y-m-d'))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
     }
 
     public function render()
@@ -31,13 +30,13 @@ class DataAbsen extends Component
         $tanggal = explode(' ', $this->tanggal);
 
         if (count($tanggal) == 1) {
-            $this->absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
+            $this->absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
         } else {
 
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get();
+            $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
         }
 
         $this->dispatchBrowserEvent('triggerJs');
@@ -69,7 +68,6 @@ class DataAbsen extends Component
             IsKeluar::where('tanggal_is_keluar', date('Y-m-d', strtotime($tanggal[0])))->delete();
             IsMasuk::where('tanggal_is_masuk', date('Y-m-d', strtotime($tanggal[0])))->delete();
             Pulang::where('tanggal_pulang', date('Y-m-d', strtotime($tanggal[0])))->delete();
-            Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->delete();
         } else {
 
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
@@ -80,7 +78,6 @@ class DataAbsen extends Component
             IsKeluar::whereBetween('tanggal_is_keluar', [$tanggalAwal, $tanggalAkhir])->delete();
             IsMasuk::whereBetween('tanggal_is_masuk', [$tanggalAwal, $tanggalAkhir])->delete();
             Pulang::whereBetween('tanggal_pulang', [$tanggalAwal, $tanggalAkhir])->delete();
-            Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->delete();
         }
 
         $this->showData();

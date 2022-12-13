@@ -20,7 +20,6 @@ return new class extends Migration
             $table->foreignId('is_keluar_id')->nullable();
             $table->foreignId('is_masuk_id')->nullable();
             $table->foreignId('pulang_id')->nullable();
-            $table->foreignId('izin_id')->nullable();
             $table->date('tanggal_absen');
             $table->timestamps();
         });

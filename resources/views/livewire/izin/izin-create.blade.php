@@ -35,10 +35,10 @@
                 </div>
             </div> --}}
             {{-- @if ($isAbsen == true) --}}
-            <div class="alert alert-success text-center" role="alert">
+            {{-- <div class="alert alert-success text-center" role="alert">
                 <img src="/img/cat.png" class="img-fluid">
                 <strong>Izin Tersimpan</strong>
-            </div>
+            </div> --}}
             {{-- @else --}}
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Keperluan</label>

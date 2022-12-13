@@ -49,7 +49,8 @@ Route::middleware('auth')->group(function () {
         $karyawan = Karyawan::select('nama_karyawan')->where('id', auth()->user()->karyawan_id)->first();
         return view('index', [
             'title' => 'SIGASIK',
-            'nama_karyawan' => $karyawan->nama_karyawan
+            'nama_karyawan' => $karyawan->nama_karyawan,
+            'jama' => strtotime('07:30') - strtotime('07:11')
         ]);
     });
 
@@ -92,6 +93,12 @@ Route::middleware('admin')->group(function () {
         ]);
     });
 
+    Route::get('/data_izin', function () {
+        return view('admin.data_izin', [
+            'title' => 'Data Izin'
+        ]);
+    });
+
     Route::get('/karyawan', function () {
         return view('admin.karyawan', [
             'title' => 'Data Karyawan'
@@ -121,4 +128,7 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/exportExcelKunjungan/{tanggal}', [AdminController::class, 'exportExcelKunjungan']);
     Route::get('/exportPdfKunjungan/{tanggal}', [AdminController::class, 'exportPdfKunjungan']);
+
+    Route::get('/exportExcelIzin/{tanggal}', [AdminController::class, 'exportExcelIzin']);
+    Route::get('/exportPdfIzin/{tanggal}', [AdminController::class, 'exportPdfIzin']);
 });

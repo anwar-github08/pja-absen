@@ -21,6 +21,6 @@ class PulangShow extends Component
 
     public function eTriggerPulangShow()
     {
-        session()->flash('sukses', 'Berhasil Absen!!');
+        // session()->flash('sukses', 'Berhasil Absen!!');
     }
 }

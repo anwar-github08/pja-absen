@@ -22,6 +22,6 @@ class DatangShow extends Component
 
     public function eTriggerDatangShow()
     {
-        session()->flash('sukses', 'Berhasil Absen!!');
+        // session()->flash('sukses', 'Berhasil Absen!!');
     }
 }

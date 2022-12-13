@@ -18,6 +18,6 @@ class IsMasukShow extends Component
     public function eTriggerIsMasukShow()
     {
 
-        session()->flash('sukses', 'Berhasil Absen!!');
+        // session()->flash('sukses', 'Berhasil Absen!!');
     }
 }

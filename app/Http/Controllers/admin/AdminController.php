@@ -159,4 +159,54 @@ class AdminController extends Controller
             'kunjungans' => $kunjungans
         ]);
     }
+
+    public function exportExcelIzin($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'desc')->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+
+        return view('admin.export.export_excel_izin', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'izins' => $izins
+        ]);
+    }
+
+    public function exportPdfIzin($tanggal)
+    {
+        $tanggal = explode(' ', $tanggal);
+
+        if (count($tanggal) == 1) {
+            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggal[0]));
+        } else {
+
+            $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
+            $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
+
+            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'desc')->with('karyawan')->get();
+
+            $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
+        }
+
+        return view('admin.export.export_pdf_izin', [
+            'title' => 'Export',
+            'tanggal' => $tanggal,
+            'izins' => $izins
+        ]);
+    }
 }
