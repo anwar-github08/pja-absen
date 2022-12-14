@@ -39,6 +39,18 @@
                 </div>
 
                 <div class="row mb-3">
+                    <label class="col-sm-2 col-form-label">Jam Kerja</label>
+                    <div class="col-sm-10">
+                        <select wire:model="jam_kerja_id" class="form-select">
+                            <option value="-">-- pilih jam kerja --</option>
+                            @foreach ($jam_kerjas as $jam_kerja)
+                                <option value="{{ $jam_kerja->id }}">{{ $jam_kerja->nama_jam_kerja }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Admin</label>
                     <div class="col-sm-10 form-switch">
                         <input class="form-check-input" wire:model="is_admin" type="checkbox" role="switch"
@@ -54,7 +66,7 @@
                 </div>
 
                 <div class="row">
-                    @if ($nama_karyawan == '' or $username == '' or $password == '' or $jabatan_id == '-')
+                    @if ($nama_karyawan == '' or $username == '' or $password == '' or $jabatan_id == '-' or $jam_kerja_id == '-')
                         <button class="btn btn-primary" wire:click='storeKaryawan' disabled>Simpan</button>
                     @else
                         <button class="btn btn-primary" wire:click='storeKaryawan'>Simpan</button>

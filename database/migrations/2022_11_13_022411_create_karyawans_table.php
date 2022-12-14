@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('karyawans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('jabatan_id');
+            $table->foreignId('jam_kerja_id')->nullable();
             $table->string('nama_karyawan');
             $table->timestamps();
         });

@@ -28,6 +28,7 @@
 # hapus data kunjungan+unlink
 # kasih error reporting pada hapus absen
 # membuat data izin,export dan hapus
+jam kerja simpan ke absen belum selesai
 
 /other/
 lokasi kurang akurat

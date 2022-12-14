@@ -99,6 +99,12 @@ Route::middleware('admin')->group(function () {
         ]);
     });
 
+    Route::get('/jam_kerja', function () {
+        return view('admin.jam_kerja', [
+            'title' => 'Jam Kerja'
+        ]);
+    });
+
     Route::get('/karyawan', function () {
         return view('admin.karyawan', [
             'title' => 'Data Karyawan'

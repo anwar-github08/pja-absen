@@ -33,7 +33,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $absen->karyawan->nama_karyawan }}</td>
                     <td>{{ date('d-m-Y', strtotime($absen->tanggal_absen)) }}</td>
-                    <td>{{ $absen->datang->jam_datang }}</td>
+                    <td>
+                        {{ $absen->datang->jam_datang }}
+                        <br>
+                        <small><i> terlambat 5 mnt</i></small>
+                    </td>
                     <td>{{ $absen->is_keluar->jam_is_keluar }}</td>
                     <td>{{ $absen->is_masuk->jam_is_masuk }}</td>
                     <td>{{ $absen->pulang->jam_pulang }}</td>

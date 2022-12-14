@@ -16,6 +16,11 @@ class Karyawan extends Model
         return $this->belongsTo(Jabatan::class);
     }
 
+    public function jam_kerja()
+    {
+        return $this->belongsTo(JamKerja::class)->withDefault();
+    }
+
     public function user()
     {
         return $this->hasOne(User::class);

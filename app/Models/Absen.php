@@ -15,6 +15,10 @@ class Absen extends Model
     {
         return $this->belongsTo(Karyawan::class);
     }
+    public function jam_kerja()
+    {
+        return $this->belongsTo(JamKerja::class);
+    }
     public function datang()
     {
         return $this->belongsTo(Datang::class)->withDefault();

@@ -187,7 +187,8 @@ class DatabaseSeeder extends Seeder
             'jabatan_id' => 1,
             'name' => 'sigasik',
             'key' => 'admin',
-            'password' => Hash::make('admin')
+            'password' => Hash::make('admin'),
+            'is_admin' => true
         ]);
     }
 }

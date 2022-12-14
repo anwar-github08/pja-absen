@@ -2,11 +2,12 @@
 
 namespace App\Http\Livewire\Datang;
 
-use App\Http\Controllers\LokasiController;
 use App\Models\Absen;
 use App\Models\Datang;
 use Livewire\Component;
+use App\Models\Karyawan;
 use Livewire\WithFileUploads;
+use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -20,6 +21,8 @@ class DatangCreate extends Component
     public $lokasi_datang;
     public $foto_datang;
 
+    public $jam_kerja_id;
+
     public $isAbsen = false;
 
     // public $karyawans;
@@ -27,6 +30,8 @@ class DatangCreate extends Component
 
     public function mount()
     {
+        $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->get();
+
         $lokasi = new LokasiController;
         $lokasi = $lokasi->index();
 
@@ -34,6 +39,7 @@ class DatangCreate extends Component
         $this->jam_datang = date('H:i:s');
         $this->lokasi_datang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
+        $this->jam_kerja_id = $jam_kerja_id->jam_kerja_id;
     }
 
     public function render()
@@ -85,6 +91,7 @@ class DatangCreate extends Component
 
     public function storeDatang()
     {
+        dd($this->jam_kerja_id);
         // validasi
         $this->validate([
             'foto_datang' => 'image'
@@ -109,9 +116,9 @@ class DatangCreate extends Component
         // simpan atau update absen
         Absen::updateOrInsert(
             [
-                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_datang))
+                'karyawan_id' => $this->karyawan_id, 'jam_kerja_id' => $this->jam_kerja_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_datang)) //jika belum ada ini yang  diinsert
             ],
-            ['datang_id' => $datang->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
+            ['datang_id' => $datang->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')] // jika sudah ada update kolom datang_id
         );
 
 

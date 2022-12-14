@@ -17,6 +17,9 @@
                     href="/data_izin">Data Izin</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ $title == 'Jam Kerja' ? 'active' : '' }}" href="/jam_kerja">Atur Jam Kerja</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ $title == 'Data Jabatan' ? 'active' : '' }}" href="/jabatan">Master
                     Jabatan</a>
             </li>
