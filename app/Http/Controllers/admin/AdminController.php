@@ -30,7 +30,7 @@ class AdminController extends Controller
 
         return view('admin.detail_absen', [
             'title' => 'Detail Absen',
-            'absens' => Absen::where('id', $id)->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->with('izin')->get()
+            'absens' => Absen::where('id', $id)->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get()
         ]);
     }
 

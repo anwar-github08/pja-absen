@@ -24,4 +24,10 @@ class JamKerjaShow extends Component
     {
         session()->flash('sukses', 'Data Tersimpan');
     }
+
+    public function deleteJamKerja($id)
+    {
+        JamKerja::destroy($id);
+        $this->dispatchBrowserEvent('triggerJs');
+    }
 }

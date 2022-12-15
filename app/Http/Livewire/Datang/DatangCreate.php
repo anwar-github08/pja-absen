@@ -30,7 +30,6 @@ class DatangCreate extends Component
 
     public function mount()
     {
-        $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->get();
 
         $lokasi = new LokasiController;
         $lokasi = $lokasi->index();
@@ -39,6 +38,8 @@ class DatangCreate extends Component
         $this->jam_datang = date('H:i:s');
         $this->lokasi_datang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
+
+        $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->first();
         $this->jam_kerja_id = $jam_kerja_id->jam_kerja_id;
     }
 
@@ -91,7 +92,6 @@ class DatangCreate extends Component
 
     public function storeDatang()
     {
-        dd($this->jam_kerja_id);
         // validasi
         $this->validate([
             'foto_datang' => 'image'

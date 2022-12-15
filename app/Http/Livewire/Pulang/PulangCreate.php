@@ -33,6 +33,9 @@ class PulangCreate extends Component
         $this->jam_pulang = date('H:i:s');
         $this->lokasi_pulang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
+
+        $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->first();
+        $this->jam_kerja_id = $jam_kerja_id->jam_kerja_id;
     }
 
     public function render()
@@ -83,7 +86,7 @@ class PulangCreate extends Component
         // simpan atau update absen
         Absen::updateOrInsert(
             [
-                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_pulang))
+                'karyawan_id' => $this->karyawan_id, 'jam_kerja_id' => $this->jam_kerja_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_pulang))
             ],
             ['pulang_id' => $pulang->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );

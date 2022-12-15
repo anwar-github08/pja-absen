@@ -49,8 +49,7 @@ Route::middleware('auth')->group(function () {
         $karyawan = Karyawan::select('nama_karyawan')->where('id', auth()->user()->karyawan_id)->first();
         return view('index', [
             'title' => 'SIGASIK',
-            'nama_karyawan' => $karyawan->nama_karyawan,
-            'jama' => strtotime('07:30') - strtotime('07:11')
+            'nama_karyawan' => $karyawan->nama_karyawan
         ]);
     });
 

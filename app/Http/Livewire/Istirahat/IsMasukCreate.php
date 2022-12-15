@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Istirahat;
 use App\Models\Absen;
 use App\Models\IsMasuk;
 use Livewire\Component;
+use App\Models\Karyawan;
 use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
@@ -27,6 +28,9 @@ class IsMasukCreate extends Component
         $this->jam_is_masuk = date('H:i:s');
         $this->lokasi_is_masuk = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
+
+        $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->first();
+        $this->jam_kerja_id = $jam_kerja_id->jam_kerja_id;
     }
 
     public function render()
@@ -57,7 +61,7 @@ class IsMasukCreate extends Component
         // simpan atau update absen
         Absen::updateOrInsert(
             [
-                'karyawan_id' => $this->karyawan_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_masuk))
+                'karyawan_id' => $this->karyawan_id, 'jam_kerja_id' => $this->jam_kerja_id, 'tanggal_absen' => date('Y-m-d', strtotime($this->tanggal_is_masuk))
             ],
             ['is_masuk_id' => $isMasuk->id, 'created_at' => date('Y-m-d H:i:s'), 'updated_at' => date('Y-m-d H:i:s')]
         );

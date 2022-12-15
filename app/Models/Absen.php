@@ -17,7 +17,7 @@ class Absen extends Model
     }
     public function jam_kerja()
     {
-        return $this->belongsTo(JamKerja::class);
+        return $this->belongsTo(JamKerja::class)->withDefault();
     }
     public function datang()
     {

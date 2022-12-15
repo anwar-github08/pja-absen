@@ -30,7 +30,7 @@ class JamKerjaCreate extends Component
         // dd($this->nama_jam_kerja, $this->jam_datang, $this->jam_is_keluar, $this->jam_is_masuk, $this->jam_pulang, $this->jam_sebelum_datang, $this->jam_sebelum_istirahat, $this->jam_sebelum_pulang, $this->jam_setelah_datang, $this->jam_setelah_istirahat, $this->jam_setelah_pulang);
 
         JamKerja::create([
-            'nama_jam_kerja' => $this->nama_jam_kerja,
+            'nama_jam_kerja' => ucwords($this->nama_jam_kerja),
             'jam_datang' => $this->jam_datang,
             'jam_is_keluar' => $this->jam_is_keluar,
             'jam_is_masuk' => $this->jam_is_masuk,
