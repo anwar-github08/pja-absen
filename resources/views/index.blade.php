@@ -118,7 +118,7 @@
         <form action="/logout" method="POST">
             @csrf
             <button type="submit" class="nama_karyawan border-0 bg-transparent"
-                onclick="return confirm('logout..?')">{{ strtoupper($nama_karyawan) }}</button>
+                onclick="return confirm('Keluar..?')">{{ strtoupper($nama_karyawan) }}</button>
         </form>
     </div>
 

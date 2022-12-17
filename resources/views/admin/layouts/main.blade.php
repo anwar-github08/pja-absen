@@ -62,6 +62,6 @@
     function loader() {
         setTimeout(function() {
             $('.preloader').fadeOut()
-        }, 2000);
+        }, 500);
     };
 </script>

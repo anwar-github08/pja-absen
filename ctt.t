@@ -29,8 +29,8 @@
 # kasih error reporting pada hapus absen
 # membuat data izin,export dan hapus
 # jam kerja simpan ke absen belum selesai
-kurang kondisi istirahat
-jika kondisi fix, kasih juga ke report
+# kurang kondisi istirahat
+# jika kondisi fix, kasih juga ke report
 
 /other/
 lokasi kurang akurat
