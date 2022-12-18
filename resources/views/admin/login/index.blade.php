@@ -125,7 +125,7 @@
             @csrf
             <div class="form-floating mb-2">
                 <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                    placeholder="Username" autocomplete="off" required value="{{ old('name') }}">
+                    placeholder="Username" autocomplete="off" required value="{{ old('name') }}" autofocus>
                 <label>Username</label>
                 @error('name')
                     <div class="invalid-feedback">

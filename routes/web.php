@@ -10,6 +10,8 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Models\Karyawan;
+use Illuminate\Support\Facades\Artisan;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,6 +34,9 @@ use App\Models\Karyawan;
 
 // lokasi
 Route::get('/lokasi', [LokasiController::class, 'index']);
+Route::get('/link', function () {
+    Artisan::call('storage:link');
+});
 
 // rute middleware guest->bisa diakses ketika belum login
 Route::middleware('guest')->group(function () {

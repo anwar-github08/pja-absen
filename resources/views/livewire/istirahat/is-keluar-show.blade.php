@@ -11,7 +11,7 @@
             <tr>
                 <th>No</th>
                 <th>Karyawan</th>
-                <th>Jam Keluar</th>
+                <th>Jam Istirahat Keluar</th>
                 <th>Lokasi</th>
             </tr>
         </thead>

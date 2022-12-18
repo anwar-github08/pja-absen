@@ -14,6 +14,7 @@
                 <th>Jabatan</th>
                 <th>Username</th>
                 <th>Password</th>
+                <th>Jam Kerja</th>
                 <th>Status Admin</th>
                 <th>Aksi</th>
             </tr>
@@ -26,6 +27,7 @@
                     <td>{{ $karyawan->jabatan->nama_jabatan }}</td>
                     <td>{{ $karyawan->user->name }}</td>
                     <td>{{ $karyawan->user->key }}</td>
+                    <td>{{ $karyawan->jam_kerja->nama_jam_kerja }}</td>
                     <td class="form-switch">
                         @if ($karyawan->user->is_admin == 0)
                             <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault"

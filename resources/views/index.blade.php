@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set('Asia/Bangkok');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -121,30 +124,35 @@
                 onclick="return confirm('Keluar..?')">{{ strtoupper($nama_karyawan) }}</button>
         </form>
     </div>
+    @if (date('H:i') < '06:00')
+        <div class="text-dark" style="font-style: italic"><strong> Belum Bisa Diakses</strong></div>
+    @elseif(date('H:i') > '21:00')
+        <div class="text-dark" style="font-style: italic"><strong> Tidak Bisa Diakses</strong></div>
+    @else
+        <div class="row text-center">
 
-    <div class="row text-center">
+            <div class="col-md-6 col-sm-6 mb-3">
+                <div class="dropdown">
+                    <a class="btn btn-absen btn-lg dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Absen
+                    </a>
 
-        <div class="col-md-6 col-sm-6 mb-3">
-            <div class="dropdown">
-                <a class="btn btn-absen btn-lg dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Absen
-                </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/datang">Datang</a></li>
+                        <li><a class="dropdown-item" href="/is_keluar">Istirahat Keluar</a></li>
+                        <li><a class="dropdown-item" href="/is_masuk">Istirahat Masuk</a></li>
+                        <li><a class="dropdown-item" href="/pulang">Pulang</a></li>
+                        <li><a class="dropdown-item" href="/izin">Izin</a></li>
+                    </ul>
+                </div>
+            </div>
 
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/datang">Datang</a></li>
-                    <li><a class="dropdown-item" href="/is_keluar">Istirahat Keluar</a></li>
-                    <li><a class="dropdown-item" href="/is_masuk">Istirahat Masuk</a></li>
-                    <li><a class="dropdown-item" href="/pulang">Pulang</a></li>
-                    <li><a class="dropdown-item" href="/izin">Izin</a></li>
-                </ul>
+            <div class="col-md-6 col-sm-6">
+                <a href="/kunjungan" class="btn btn-kunjungan btn-lg">Kunjungan</a>
             </div>
         </div>
-
-        <div class="col-md-6 col-sm-6">
-            <a href="/kunjungan" class="btn btn-kunjungan btn-lg">Kunjungan</a>
-        </div>
-    </div>
+    @endif
 
     @if (session()->has('error'))
         <div class="mt-3">
