@@ -33,10 +33,10 @@
 # jika kondisi fix, kasih juga ke report
 
 /other/
-lokasi kurang akurat
-
-relasi: jika jabatan dihapus, data karyawan berdasar jabatan akan kehapus
-jika karyawan dihapus, semua data yang ada id karyawan akan kehapus
+# lokasi kurang akurat
+# relasi: jika jabatan dihapus, data karyawan berdasar jabatan akan kehapus
+# jika karyawan dihapus, semua data yang ada id karyawan akan kehapus
+symlink pada hosting
 
 
 /kondisi datang/

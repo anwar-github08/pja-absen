@@ -10,6 +10,7 @@ date_default_timezone_set('Asia/Bangkok');
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+    <link rel="icon" type="image/png" href="img/sigasik.png">
     <title>SIGASIK</title>
 </head>
 
@@ -124,10 +125,9 @@ date_default_timezone_set('Asia/Bangkok');
                 onclick="return confirm('Keluar..?')">{{ strtoupper($nama_karyawan) }}</button>
         </form>
     </div>
-    @if (date('H:i') < '06:00')
-        <div class="text-dark" style="font-style: italic"><strong> Belum Bisa Diakses</strong></div>
-    @elseif(date('H:i') > '21:00')
+    @if (date('H:i') < '06:00' or date('H:i') > '21:00')
         <div class="text-dark" style="font-style: italic"><strong> Tidak Bisa Diakses</strong></div>
+    @elseif(auth()->user()->is_admin == true)
     @else
         <div class="row text-center">
 
@@ -180,6 +180,6 @@ date_default_timezone_set('Asia/Bangkok');
     function loader() {
         setTimeout(function() {
             $('.preloader').fadeOut()
-        }, 2000);
+        }, 1000);
     };
 </script>

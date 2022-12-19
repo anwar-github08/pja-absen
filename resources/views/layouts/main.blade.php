@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/tgl/flatpickr.min.css">
+    <link rel="icon" type="image/png" href="img/sigasik.png">
     <title>{{ $title }}</title>
     @livewireStyles
 </head>
