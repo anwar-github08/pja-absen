@@ -21,7 +21,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $isKeluar->karyawan->nama_karyawan }}</td>
                     <td>{{ $isKeluar->jam_is_keluar }}</td>
-                    <td>{{ $isKeluar->lokasi_is_keluar }}</td>
+                    <td>
+                        <a style="color: white" href="https://www.google.com/maps/place/{{ $isKeluar->lokasi_is_keluar }}"
+                            target="_blank">
+                            {{ $isKeluar->lokasi_is_keluar }}</a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

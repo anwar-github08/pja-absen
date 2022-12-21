@@ -22,7 +22,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $datang->karyawan->nama_karyawan }}</td>
                     <td>{{ $datang->jam_datang }}</td>
-                    <td>{{ $datang->lokasi_datang }}</td>
+                    <td>
+                        <a style="color: white" href="https://www.google.com/maps/place/{{ $datang->lokasi_datang }}"
+                            target="_blank">
+                            {{ $datang->lokasi_datang }}</a>
+                    </td>
                     <td>
                         <img src="/storage/foto_datang/{{ $datang->foto_datang }}" alt="foto_datang" width="70">
                     </td>

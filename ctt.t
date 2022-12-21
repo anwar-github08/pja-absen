@@ -14,6 +14,7 @@
 # loading selama page diload
 # login untuk hak akses
 # ketika sudah absen, kasih alert sudah absen
+# kasih link google maps di setiap absen
 
 /admin view/
 # datatables
@@ -31,13 +32,17 @@
 # jam kerja simpan ke absen belum selesai
 # kurang kondisi istirahat
 # jika kondisi fix, kasih juga ke report
+pada detail, lokasi ganti link
 
 /other/
 # lokasi kurang akurat
 # relasi: jika jabatan dihapus, data karyawan berdasar jabatan akan kehapus
 # jika karyawan dihapus, semua data yang ada id karyawan akan kehapus
-symlink pada hosting
+# symlink pada hosting
+# solusi lokasi
 
+/note/
+akses jabatan harus ada minimal 1, agar tidak error
 
 /kondisi datang/
 jam datang = 07.30

@@ -30,7 +30,11 @@
                     <td>{{ $kunjungan->karyawan->nama_karyawan }}</td>
                     <td>{{ date('d-m-Y', strtotime($kunjungan->tanggal_kunjungan)) }}</td>
                     <td>{{ $kunjungan->jam_kunjungan }}</td>
-                    <td>{{ $kunjungan->lokasi_kunjungan }}</td>
+                    <td>
+                        <a style="color: white"
+                            href="https://www.google.com/maps/place/{{ $kunjungan->lokasi_kunjungan }}" target="_blank">
+                            {{ $kunjungan->lokasi_kunjungan }}</a>
+                    </td>
                     <td><img src="/storage/foto_kunjungan/{{ $kunjungan->foto_kunjungan }}" alt="foto_kunjungan"
                             width="100"></td>
                     <td><a href="/detailKunjungan/{{ $kunjungan->id }}" target="blank"

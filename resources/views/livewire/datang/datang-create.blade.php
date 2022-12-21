@@ -16,22 +16,21 @@
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <label class="col-sm-2 col-form-label">Lokasi</label>
-                <div class="col-sm-10">
-                    <input type="hidden" wire:model="lokasi_datang" class="form-control" disabled>
-                </div>
-            </div>
-
+            
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Karyawan</label>
                 <div class="col-sm-10" wire:key='{{ $iteration }}' wire:ignore>
                     <select wire:model="karyawan_id" class="form-select">
                         <option value="-">-- pilih karyawan --</option>
                         @foreach ($karyawans as $karyawan)
-                            <option value="{{ $karyawan->id }}">{{ $karyawan->nama_karyawan }}</option>
+                        <option value="{{ $karyawan->id }}">{{ $karyawan->nama_karyawan }}</option>
                         @endforeach
                     </select>
+                </div>
+            </div> --}}
+            {{-- <div class="row mb-3">
+                <div class="col-sm-10">
+                    <input type="hidden" wire:model="lokasi_datang" id="lokasi" class="form-control" disabled>
                 </div>
             </div> --}}
 
@@ -76,8 +75,8 @@
         </div>
     </div>
 </div>
-{{-- @push('script')
-    <script>
+@push('script')
+    {{-- <script>
         $(document).ready(function() {
             $('.form-select').select2({
                 theme: "classic",
@@ -99,5 +98,6 @@
                 })
             })
         })
-    </script>
-@endpush --}}
+    </script> --}}
+    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+@endpush

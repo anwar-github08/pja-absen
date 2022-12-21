@@ -46,6 +46,14 @@ class IsKeluarCreate extends Component
         return view('livewire.istirahat.is-keluar-create');
     }
 
+    // menangkap emit
+    protected $listeners = ['getLocation'];
+
+    public function getLocation($latLang)
+    {
+        $this->lokasi_is_keluar = $latLang;
+    }
+
     public function storeIsKeluar()
     {
 

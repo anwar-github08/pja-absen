@@ -10,7 +10,6 @@ use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\LoginController;
 use App\Http\Controllers\LokasiController;
 use App\Models\Karyawan;
-use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +34,11 @@ use Illuminate\Support\Facades\Artisan;
 // lokasi
 Route::get('/lokasi', [LokasiController::class, 'index']);
 Route::get('/link', function () {
-    Artisan::call('storage:link');
+    $fromFolder = '/home/pakisjay/pja-absen/storage/app/public';
+    $toFolder = '/home/pakisjay/sigasik.pakisjayaabadi.com/storage';
+    symlink($fromFolder, $toFolder);
 });
+
 
 // rute middleware guest->bisa diakses ketika belum login
 Route::middleware('guest')->group(function () {

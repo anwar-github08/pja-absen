@@ -45,6 +45,14 @@ class IsMasukCreate extends Component
         return view('livewire.istirahat.is-masuk-create');
     }
 
+    // menangkap emit
+    protected $listeners = ['getLocation'];
+
+    public function getLocation($latLang)
+    {
+        $this->lokasi_is_masuk = $latLang;
+    }
+
 
     public function storeIsMasuk()
     {

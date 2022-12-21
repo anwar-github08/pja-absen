@@ -44,6 +44,13 @@ class KunjunganCreate extends Component
         return view('livewire.kunjungan.kunjungan-create');
     }
 
+    // menangkap emit
+    protected $listeners = ['getLocation'];
+
+    public function getLocation($latLang)
+    {
+        $this->lokasi_kunjungan = $latLang;
+    }
 
     protected $rules = ['foto_kunjungan' => 'image'];
     public function updated($propertyName)

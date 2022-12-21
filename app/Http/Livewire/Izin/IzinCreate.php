@@ -41,6 +41,14 @@ class IzinCreate extends Component
         return view('livewire.izin.izin-create');
     }
 
+    // menangkap emit
+    protected $listeners = ['getLocation'];
+
+    public function getLocation($latLang)
+    {
+        $this->lokasi_izin = $latLang;
+    }
+
     public function storeIzin()
     {
 

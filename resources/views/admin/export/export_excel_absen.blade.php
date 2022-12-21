@@ -71,7 +71,7 @@ header('Content-Transfer-Encoding: BINARY');
                         @if ($absen->datang->foto_datang == null)
                             -
                         @else
-                            <img src="F:\laravel\pja-absen\storage\app\public\foto_datang\{{ $absen->datang->foto_datang }}"
+                            <img src="https://sigasik.pakisjayaabadi.com/storage/foto_datang/{{ $absen->datang->foto_datang }}"
                                 alt="foto_datang" width="100">
                             {{-- <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
                                     width="100"> --}}
@@ -101,8 +101,8 @@ header('Content-Transfer-Encoding: BINARY');
                         @if ($absen->pulang->foto_pulang == null)
                             -
                         @else
-                            <img src="F:\laravel\pja-absen\storage\app\public\foto_pulang\{{ $absen->pulang->foto_pulang }}"
-                                alt="foto_datang" width="100">
+                            <img src="https://sigasik.pakisjayaabadi.com/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}"
+                                alt="foto_pulang" width="100">
                         @endif
                     </td>
                 </tr>

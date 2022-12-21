@@ -22,7 +22,11 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $pulang->karyawan->nama_karyawan }}</td>
                     <td>{{ $pulang->jam_pulang }}</td>
-                    <td>{{ $pulang->lokasi_pulang }}</td>
+                    <td>
+                        <a style="color: white" href="https://www.google.com/maps/place/{{ $pulang->lokasi_pulang }}"
+                            target="_blank">
+                            {{ $pulang->lokasi_pulang }}</a>
+                    </td>
                     <td>
                         <img src="/storage/foto_pulang/{{ $pulang->foto_pulang }}" alt="foto_pulang" width="70">
                     </td>

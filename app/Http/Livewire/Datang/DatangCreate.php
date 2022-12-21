@@ -31,12 +31,11 @@ class DatangCreate extends Component
     public function mount()
     {
 
-        $lokasi = new LokasiController;
-        $lokasi = $lokasi->index();
+        // $lokasi = new LokasiController;
+        // $lokasi = $lokasi->index();
 
         $this->tanggal_datang = date('d-m-Y');
         $this->jam_datang = date('H:i:s');
-        $this->lokasi_datang = $lokasi;
         $this->karyawan_id =  auth()->user()->karyawan_id;
 
         $jam_kerja_id = Karyawan::select('jam_kerja_id')->where('id', auth()->user()->karyawan_id)->first();
@@ -79,10 +78,12 @@ class DatangCreate extends Component
     }
 
     // menangkap emit
-    // protected $listeners = ['refresh' => '$refresh'];
+    protected $listeners = ['getLocation'];
 
-    // real time validation
-
+    public function getLocation($latLang)
+    {
+        $this->lokasi_datang = $latLang;
+    }
 
     protected $rules = ['foto_datang' => 'image'];
     public function updated($propertyName)

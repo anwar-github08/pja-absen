@@ -50,6 +50,13 @@ class PulangCreate extends Component
         return view('livewire.pulang.pulang-create');
     }
 
+    // menangkap emit
+    protected $listeners = ['getLocation'];
+
+    public function getLocation($latLang)
+    {
+        $this->lokasi_pulang = $latLang;
+    }
 
     // real time validation
     protected $rules = ['foto_pulang' => 'image'];

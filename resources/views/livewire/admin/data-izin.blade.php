@@ -30,7 +30,11 @@
                     <td>{{ $izin->karyawan->nama_karyawan }}</td>
                     <td>{{ date('d-m-Y', strtotime($izin->tanggal_izin)) }}</td>
                     <td>{{ $izin->jam_izin }}</td>
-                    <td>{{ $izin->lokasi_izin }}</td>
+                    <td>
+                        <a style="color: white" href="https://www.google.com/maps/place/{{ $izin->lokasi_izin }}"
+                            target="_blank">
+                            {{ $izin->lokasi_izin }}</a>
+                    </td>
                     <td>{{ $izin->keperluan }}</td>
                     <td><a href="/detailIzin/{{ $izin->id }}" target="blank" class="btn btn-sm btn-info">Detail</a>
                     </td>
