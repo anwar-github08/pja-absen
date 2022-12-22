@@ -23,12 +23,8 @@
                             <h6>Jam : {{ $absen->datang->jam_datang }}</h6>
                             <br>
                             <h6>Lokasi</h6>
-                            <div class="input-group">
-                                <input type="text" id="textCopyDatang" class="form-control form-control-sm"
-                                    value="{{ $absen->datang->lokasi_datang }}">
-                                <button class="btn btn-sm btn-primary" onclick="copy('Datang')">salin
-                                    lokasi</button>
-                            </div>
+                            <a href="https://www.google.com/maps/place/{{ $absen->datang->lokasi_datang }}" target='_blank'
+                                style="color: white">{{ $absen->datang->lokasi_datang }}</a>
                         @endif
                     </div>
                     {{-- is keluar --}}
@@ -40,10 +36,8 @@
                         @else
                             <h6>Jam : {{ $absen->is_keluar->jam_is_keluar }}</h6>
                             <h6>Lokasi</h6>
-                            <input type="text" id="textCopyIsKeluar" class="form-control form-control-sm mb-2"
-                                value="{{ $absen->is_keluar->lokasi_is_keluar }}">
-                            <button class="btn btn-sm btn-primary" onclick="copy('IsKeluar')">salin
-                                lokasi</button>
+                            <a href="https://www.google.com/maps/place/{{ $absen->is_keluar->lokasi_is_keluar }}"
+                                target='_blank' style="color: white">{{ $absen->is_keluar->lokasi_is_keluar }}</a>
                         @endif
                     </div>
 
@@ -56,10 +50,8 @@
                         @else
                             <h6>Jam : {{ $absen->is_masuk->jam_is_masuk }}</h6>
                             <h6>Lokasi</h6>
-                            <input type="text" id="textCopyIsMasuk" class="form-control form-control-sm mb-2"
-                                value="{{ $absen->is_masuk->lokasi_is_masuk }}">
-                            <button class="btn btn-sm btn-primary" onclick="copy('IsMasuk')">salin
-                                lokasi</button>
+                            <a href="https://www.google.com/maps/place/{{ $absen->is_masuk->lokasi_is_masuk }}"
+                                target='_blank' style="color: white">{{ $absen->is_masuk->lokasi_is_masuk }}</a>
                         @endif
                     </div>
 
@@ -75,12 +67,15 @@
                             <h6>Jam : {{ $absen->pulang->jam_pulang }}</h6>
                             <br>
                             <h6>Lokasi</h6>
-                            <div class="input-group">
+                            <a href="https://www.google.com/maps/place/{{ $absen->pulang->lokasi_pulang }}" target='_blank'
+                                style="color: white">{{ $absen->pulang->lokasi_pulang }}</a>
+
+                            {{-- <div class="input-group">
                                 <input type="text" id="textCopyPulang" class="form-control form-control-sm"
                                     value="{{ $absen->pulang->lokasi_pulang }}">
                                 <button class="btn btn-sm btn-primary" onclick="copy('Pulang')">salin
                                     lokasi</button>
-                            </div>
+                            </div> --}}
                         @endif
                     </div>
 

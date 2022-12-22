@@ -15,6 +15,7 @@
 # login untuk hak akses
 # ketika sudah absen, kasih alert sudah absen
 # kasih link google maps di setiap absen
+# footer tidak responsif
 
 /admin view/
 # datatables
@@ -32,7 +33,7 @@
 # jam kerja simpan ke absen belum selesai
 # kurang kondisi istirahat
 # jika kondisi fix, kasih juga ke report
-pada detail, lokasi ganti link
+# pada detail, lokasi ganti link
 
 /other/
 # lokasi kurang akurat
@@ -43,6 +44,26 @@ pada detail, lokasi ganti link
 
 /note/
 akses jabatan harus ada minimal 1, agar tidak error
+
+/api positionstack08/
+f9bec67a76290a05d9287ad277317755
+
+
+/cara upload laravel ke hosting/
+export db 
+compress project ke .zip
+upload project ke hosting
+extract project
+pindah folder public ke path hosting utama
+ubah file index pada folder public
+buat db di hosting
+import db
+atur .env
+buat symlink
+
+selesai
+
+
 
 /kondisi datang/
 jam datang = 07.30

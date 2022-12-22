@@ -39,6 +39,33 @@ Route::get('/link', function () {
     symlink($fromFolder, $toFolder);
 });
 
+// positionstack
+Route::get('tesLokasi', function () {
+
+    $apiKey = 'f9bec67a76290a05d9287ad277317755';
+
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_FRESH_CONNECT  => true,
+        // CURLOPT_URL            => 'http://api.positionstack.com/v1/reverse?access_key=' . $apiKey . '&query=-6.926894325350347, 110.79100588863616&limit=2',
+        CURLOPT_URL            => 'https://www.latlong.net/c/?lat=-6.926894325350347&long=110.79100588863616',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HEADER         => false,
+        CURLOPT_FAILONERROR    => false,
+        CURLOPT_IPRESOLVE      => CURL_IPRESOLVE_V4
+    ));
+
+    $response = curl_exec($curl);
+    $error = curl_error($curl);
+
+    curl_close($curl);
+    dd($response);
+
+    $response = json_decode($response)->data;
+    return $response ? $response : $error;
+});
+
 
 // rute middleware guest->bisa diakses ketika belum login
 Route::middleware('guest')->group(function () {

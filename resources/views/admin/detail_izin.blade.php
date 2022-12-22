@@ -13,13 +13,9 @@
                         <h6>Jam : {{ $izin->jam_izin }}</h6>
                         <br>
                         <h6>Lokasi</h6>
-                        <div class="input-group mb-4">
-                            <input type="text" id="textCopyIzin" class="form-control form-control-sm"
-                                value="{{ $izin->lokasi_izin }}">
-                            <button class="btn btn-sm btn-primary" onclick="copy('Izin')">salin
-                                lokasi</button>
-                        </div>
-                        <h6>Keperluan</h6>
+                        <a href="https://www.google.com/maps/place/{{ $izin->lokasi_izin }}" target='_blank'
+                            style="color: white">{{ $izin->lokasi_izin }}</a>
+                        <h6 class="mt-2">Keperluan</h6>
                         <textarea class="form-control" disabled>{{ $izin->keperluan }}</textarea>
                     </div>
                 </div>

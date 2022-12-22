@@ -5,7 +5,7 @@
                 <a class="nav-link {{ $title == 'Dashboard' ? 'active' : '' }}" href="/admin">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ ($title == 'Data Absen') | ($title == 'Detail Absen') | ($title == 'Detail Izin') ? 'active' : '' }}"
+                <a class="nav-link {{ ($title == 'Data Absen') | ($title == 'Detail Absen') ? 'active' : '' }}"
                     href="/data_absen">Data Absen</a>
             </li>
             <li class="nav-item">

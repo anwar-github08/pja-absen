@@ -13,13 +13,9 @@
                         <h6>Jam : {{ $kunjungan->jam_kunjungan }}</h6>
                         <br>
                         <h6>Lokasi</h6>
-                        <div class="input-group mb-4">
-                            <input type="text" id="textCopyKunjungan" class="form-control form-control-sm"
-                                value="{{ $kunjungan->lokasi_kunjungan }}">
-                            <button class="btn btn-sm btn-primary" onclick="copy('Kunjungan')">salin
-                                lokasi</button>
-                        </div>
-                        <h6>Foto</h6>
+                        <a href="https://www.google.com/maps/place/{{ $kunjungan->lokasi_kunjungan }}" target='_blank'
+                            style="color: white">{{ $kunjungan->lokasi_kunjungan }}</a>
+                        <h6 class="mt-2">Foto</h6>
                         <div class="text-center">
                             <img src="/storage/foto_kunjungan/{{ $kunjungan->foto_kunjungan }}" class="img-fluid mb-3 mt-3"
                                 alt="foto_kunjungan" width="500">
