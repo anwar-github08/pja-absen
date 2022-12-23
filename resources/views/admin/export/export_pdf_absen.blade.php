@@ -57,6 +57,7 @@
                             <small style="color: black"><i>datang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->datang->jam_datang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang)))) / 60 }}
                                     menit</i></small>
+                        @elseif($absen->datang->jam_datang == null)
                         @else
                             <small style="color: black"><i> tidak hadir</i></small>
                         @endif
@@ -85,6 +86,7 @@
                             <small style="color: black"><i>pulang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->pulang->jam_pulang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang)))) / 60 }}
                                     menit</i></small>
+                        @elseif($absen->pulang->jam_pulang == null)
                         @else
                             <small style="color: black"><i> bolos</i></small>
                         @endif
