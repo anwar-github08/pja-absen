@@ -32,12 +32,12 @@ use App\Models\Karyawan;
 // });
 
 // lokasi
-Route::get('/lokasi', [LokasiController::class, 'index']);
-Route::get('/link', function () {
-    $fromFolder = '/home/pakisjay/pja-absen/storage/app/public';
-    $toFolder = '/home/pakisjay/sigasik.pakisjayaabadi.com/storage';
-    symlink($fromFolder, $toFolder);
-});
+// Route::get('/lokasi', [LokasiController::class, 'index']);
+// Route::get('/link', function () {
+//     $fromFolder = '/home/pakisjay/pja-absen/storage/app/public';
+//     $toFolder = '/home/pakisjay/sigasik.pakisjayaabadi.com/storage';
+//     symlink($fromFolder, $toFolder);
+// });
 
 // positionstack
 Route::get('tesLokasi', function () {

@@ -4,15 +4,15 @@
         <div class="form">
 
             @if ($isAbsen == true)
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-danger text-center" role="alert">
                     <img src="/img/cat.png" class="img-fluid">
-                    <strong>Sudah Absen</strong>
+                    <strong>Sudah Absen Pulang</strong>
                 </div>
             @else
                 <div class="row mb-3">
                     <label class="col-sm-2 col-form-label">Foto</label>
                     <div class="col-sm-10">
-                        <input type="file" wire:model="foto_pulang" class="form-control">
+                        <input type="file" wire:model="foto_pulang" class="form-control form-control-sm">
                     </div>
                 </div>
 
@@ -46,5 +46,5 @@
 
 </div>
 @push('script')
-    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+    <script language="JavaScript" src="/js/geoLocation.js?n=5"></script>
 @endpush

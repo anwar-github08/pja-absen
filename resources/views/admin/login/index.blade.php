@@ -106,6 +106,17 @@
             background-color: rgb(24, 69, 70);
             color: white;
         }
+
+        /* seukuran hp */
+        @media only screen and (max-width: 768px) {
+            body {
+                font-size: 12px
+            }
+
+            .btn-me {
+                font-size: 14px
+            }
+        }
     </style>
 </head>
 
@@ -113,7 +124,7 @@
 
 
     <main class="form-signin w-100 m-auto">
-        <img class="mb-4" src="/img/sigasik.png" alt="" width="150">
+        <img class="mb-4" src="/img/sigasik.png" alt="" width="300">
         @if (session()->has('error'))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>{{ session('error') }}</strong>
@@ -150,7 +161,7 @@
         </form>
 
         <p class="mt-5 mb-3 text-muted">
-            <em>&copy; 2022 SIGASIK. <strong>All Right Reserved</strong></em>
+            <em>&copy; 2022 CV. Pakis Jaya Abadi. <strong>All Right Reserved</strong></em>
         </p>
     </main>
 

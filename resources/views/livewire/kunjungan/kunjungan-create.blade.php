@@ -5,7 +5,7 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Foto</label>
                 <div class="col-sm-10">
-                    <input type="file" wire:model="foto_kunjungan" class="form-control">
+                    <input type="file" wire:model="foto_kunjungan" class="form-control form-control-sm">
                 </div>
             </div>
 
@@ -38,5 +38,5 @@
     </div>
 </div>
 @push('script')
-    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+    <script language="JavaScript" src="/js/geoLocation.js?n=5"></script>
 @endpush

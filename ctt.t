@@ -44,6 +44,7 @@
 
 /note/
 akses jabatan harus ada minimal 1, agar tidak error
+ketika halaman datang,istirahat,pulang,izin, dan kunjungan dimuat, halaman akan memanggil file geolocation.js, dan si geo tsb mengirim emit livewire berisi data latlang, dan data tsb ditangkap oleh halaman yang dimuat 
 
 /api positionstack08/
 f9bec67a76290a05d9287ad277317755

@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-2">
     @if (session()->has('sukses'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>{{ session('sukses') }}</strong>
@@ -28,7 +28,7 @@
                             {{ $pulang->lokasi_pulang }}</a>
                     </td>
                     <td>
-                        <img src="/storage/foto_pulang/{{ $pulang->foto_pulang }}" alt="foto_pulang" width="70">
+                        <img src="/storage/foto_pulang/{{ $pulang->foto_pulang }}" alt="foto_pulang">
                     </td>
                 </tr>
             @endforeach

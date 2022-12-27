@@ -108,16 +108,58 @@ input[type="text"]:disabled {
     color: white;
 }
 
+.table img {
+    width: 70px;
+}
+
 /* seukuran hp */
 @media only screen and (max-width: 768px) {
     .fr {
-        font-size: 16px;
+        font-size: 12px;
     }
     .table {
-        font-size: 12px;
+        font-size: 8px;
+    }
+    .table img {
+        width: 40px;
     }
 
     body {
+        font-size: 12px;
+    }
+
+    .fs {
+        font-size: 10px;
+    }
+
+    .alert {
+        font-size: 10px;
+    }
+    .alert img {
+        width: 40px;
+    }
+
+    .btn-two {
+        font-size: 12px;
+    }
+    .dropdown-menu li {
+        font-size: 12px;
+    }
+    .dataTables_filter {
+        font-size: 10px;
+    }
+    .dataTables_filter input {
+        height: 20px;
+    }
+
+    .dataTables_paginate {
+        font-size: 10px;
+    }
+
+    textarea::placeholder {
+        font-size: 10px;
+    }
+    input[type="file"] {
         font-size: 12px;
     }
 }

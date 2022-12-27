@@ -5,7 +5,8 @@
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Keperluan</label>
                 <div class="col-sm-10">
-                    <textarea wire:model='keperluan' cols="10" rows="3" class="form-control" placeholder="keperluan"></textarea>
+                    <textarea wire:model='keperluan' cols="10" rows="3" class="form-control form-control-sm"
+                        placeholder="Tulis keperluan disini.."></textarea>
                 </div>
             </div>
 
@@ -28,5 +29,5 @@
     </div>
 </div>
 @push('script')
-    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+    <script language="JavaScript" src="/js/geoLocation.js?n=5"></script>
 @endpush

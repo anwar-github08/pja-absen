@@ -35,9 +35,9 @@
             </div> --}}
 
             @if ($isAbsen == true)
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-primary text-center" role="alert">
                     <img src="/img/cat.png" class="img-fluid">
-                    <strong>Sudah Absen</strong>
+                    <strong>Sudah Absen Datang</strong>
                 </div>
             @else
                 <div class="row mb-3">
@@ -99,5 +99,5 @@
             })
         })
     </script> --}}
-    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+    <script language="JavaScript" src="/js/geoLocation.js?n=5"></script>
 @endpush

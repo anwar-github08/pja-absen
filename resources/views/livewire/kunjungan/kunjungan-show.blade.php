@@ -1,4 +1,4 @@
-<div class="mt-5">
+<div class="mt-3">
     @if (session()->has('sukses'))
         <div class="alert alert-warning alert-dismissible fade show" role="alert">
             <strong>{{ session('sukses') }}</strong>

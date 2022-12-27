@@ -78,7 +78,15 @@ date_default_timezone_set('Asia/Bangkok');
 
         .btn-absen,
         .btn-kunjungan {
-            font-size: 16px;
+            font-size: 12px;
+        }
+
+        body {
+            font-size: 14px
+        }
+
+        .dropdown-menu li {
+            font-size: 12px
         }
     }
 

@@ -3,9 +3,9 @@
         <div class="form">
 
             @if ($isAbsen == true)
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-warning text-center" role="alert">
                     <img src="/img/cat.png" class="img-fluid">
-                    <strong>Sudah Absen</strong>
+                    <strong>Sudah Absen Istirahat Keluar</strong>
                 </div>
             @else
                 <div class="text-center">
@@ -23,5 +23,5 @@
     </div>
 </div>
 @push('script')
-    <script language="JavaScript" src="/js/geoLocation.js?n=2"></script>
+    <script language="JavaScript" src="/js/geoLocation.js?n=5"></script>
 @endpush
