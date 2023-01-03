@@ -41,7 +41,7 @@
                     <form action="/logout" method="POST">
                         @csrf
                         <button type="submit" class="nav-link border-0 bg-transparent"
-                            onclick="return confirm('Keluar..?')">{{ strtoupper(auth()->user()->name) }}</button>
+                            onclick="return confirm('Keluar..?')">Logout</button>
                     </form>
                 </li>
             </ul>
