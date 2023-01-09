@@ -133,7 +133,7 @@ date_default_timezone_set('Asia/Bangkok');
                 onclick="return confirm('Keluar..?')">{{ strtoupper($nama_karyawan) }}</button>
         </form>
     </div>
-    @if (date('H:i') < '06:00' or date('H:i') > '21:00')
+    @if (date('H:i') < '06:00' or date('H:i') > '21:00' or date('D') == 'Sun')
         <div class="text-dark" style="font-style: italic"><strong> Tidak Bisa Diakses</strong></div>
     @elseif(auth()->user()->is_admin == true)
     @else

@@ -13,6 +13,7 @@ header('Content-Transfer-Encoding: BINARY');
     <style>
         body {
             font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-size: 9px;
         }
 
         th,
@@ -73,7 +74,7 @@ header('Content-Transfer-Encoding: BINARY');
                             -
                         @else
                             <img src="https://sigasik.pakisjayaabadi.com/storage/foto_datang/{{ $absen->datang->foto_datang }}"
-                                alt="foto_datang" width="100">
+                                alt="foto_datang" width="50">
                             {{-- <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
                                     width="100"> --}}
                         @endif
@@ -104,7 +105,7 @@ header('Content-Transfer-Encoding: BINARY');
                             -
                         @else
                             <img src="https://sigasik.pakisjayaabadi.com/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}"
-                                alt="foto_pulang" width="100">
+                                alt="foto_pulang" width="50">
                         @endif
                     </td>
                 </tr>

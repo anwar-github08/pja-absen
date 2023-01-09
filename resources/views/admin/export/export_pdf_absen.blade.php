@@ -67,7 +67,7 @@
                             -
                         @else
                             <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
-                                width="100">
+                                width="50">
                         @endif
                     </td>
                     <td>{{ $absen->is_keluar->jam_is_keluar }}</td>
@@ -97,7 +97,7 @@
                             -
                         @else
                             <img src="/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}" alt="foto_pulang"
-                                width="100">
+                                width="50">
                         @endif
                     </td>
                 </tr>
