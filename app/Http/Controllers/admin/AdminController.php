@@ -62,7 +62,6 @@ class AdminController extends Controller
 
 
     // export
-
     public function exportExcelAbsen($tanggal)
     {
         $tanggal = explode(' ', $tanggal);
@@ -80,6 +79,26 @@ class AdminController extends Controller
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
+
+
+
+        for ($i = 0; $i < count($absens); $i++) {
+
+            $url = 'http://192.168.10.3:8002/storage/foto_datang/' . $absens[$i]['datang']['foto_datang'];
+
+            $ch = curl_init();
+
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_URL, $url);
+
+            $data = curl_exec($ch);
+            curl_close($ch);
+
+            file_put_contents($absens[$i]['datang']['foto_datang'], $data);
+        }
+
+
         return view('admin.export.export_excel_absen', [
             'title' => 'Export',
             'tanggal' => $tanggal,
@@ -104,6 +123,7 @@ class AdminController extends Controller
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
+
         return view('admin.export.export_pdf_absen', [
             'title' => 'Export',
             'tanggal' => $tanggal,

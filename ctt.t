@@ -41,6 +41,7 @@
 # jika karyawan dihapus, semua data yang ada id karyawan akan kehapus
 # symlink pada hosting
 # solusi lokasi
+cara save images untuk excel
 
 /note/
 akses jabatan harus ada minimal 1, agar tidak error

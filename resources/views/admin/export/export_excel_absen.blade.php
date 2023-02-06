@@ -55,12 +55,12 @@ header('Content-Transfer-Encoding: BINARY');
                         {{ $absen->datang->jam_datang }} <br>
 
                         @if (strtotime($absen->datang->jam_datang) < strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
+                                strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
                             <small style="color:black"><i>datang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang))) - strtotime(date('H:i', strtotime($absen->datang->jam_datang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
+                                strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
                             <small style="color: black"><i>datang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->datang->jam_datang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang)))) / 60 }}
                                     menit</i></small>
@@ -85,12 +85,12 @@ header('Content-Transfer-Encoding: BINARY');
                         {{ $absen->pulang->jam_pulang }} <br>
 
                         @if (strtotime($absen->pulang->jam_pulang) < strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
+                                strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
                             <small style="color:black"><i>pulang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang))) - strtotime(date('H:i', strtotime($absen->pulang->jam_pulang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
+                                strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
                             <small style="color: black"><i>pulang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->pulang->jam_pulang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang)))) / 60 }}
                                     menit</i></small>
@@ -109,6 +109,8 @@ header('Content-Transfer-Encoding: BINARY');
                         @endif
                     </td>
                 </tr>
+
+                {{ file_put_contents($absen->pulang->foto_pulang, file_get_contents('https://sigasik.pakisjayaabadi.com/storage/foto_pulang/' . $absen->pulang->foto_pulang)) }}
             @endforeach
         </tbody>
     </table>
