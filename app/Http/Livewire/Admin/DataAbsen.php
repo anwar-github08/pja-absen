@@ -30,13 +30,13 @@ class DataAbsen extends Component
         $tanggal = explode(' ', $this->tanggal);
 
         if (count($tanggal) == 1) {
-            $this->absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $this->absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
         } else {
 
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $this->absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
         }
 
         $this->dispatchBrowserEvent('triggerJs');

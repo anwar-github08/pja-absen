@@ -67,7 +67,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -75,7 +75,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
@@ -111,7 +111,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $absens = Absen::where('tanggal_absen', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -119,7 +119,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'desc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
+            $absens = Absen::whereBetween('tanggal_absen', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_absen', 'asc')->with('karyawan')->with('datang')->with('is_keluar')->with('is_masuk')->with('pulang')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
@@ -137,7 +137,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -145,7 +145,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
+            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
@@ -161,7 +161,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -169,7 +169,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
+            $kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
@@ -185,7 +185,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -193,7 +193,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'desc')->with('karyawan')->get();
+            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }
@@ -210,7 +210,7 @@ class AdminController extends Controller
         $tanggal = explode(' ', $tanggal);
 
         if (count($tanggal) == 1) {
-            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggal[0]));
         } else {
@@ -218,7 +218,7 @@ class AdminController extends Controller
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'desc')->with('karyawan')->get();
+            $izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
 
             $tanggal = date('d/m/Y', strtotime($tanggalAwal)) . ' - ' . date('d/m/Y', strtotime($tanggalAkhir));
         }

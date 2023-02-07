@@ -48,12 +48,12 @@
                         {{ $absen->datang->jam_datang }} <br>
 
                         @if (strtotime($absen->datang->jam_datang) < strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
+                                strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
                             <small style="color:black"><i>datang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang))) - strtotime(date('H:i', strtotime($absen->datang->jam_datang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
+                                strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
                             <small style="color: black"><i>datang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->datang->jam_datang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang)))) / 60 }}
                                     menit</i></small>
@@ -67,22 +67,34 @@
                             -
                         @else
                             <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
-                                width="50">
+                                width="50"><br>
+                            <a href="https://www.google.com/maps/place/{{ $absen->datang->lokasi_datang }}"
+                                target='_blank'>{{ $absen->datang->lokasi_datang }}</a>
                         @endif
                     </td>
-                    <td>{{ $absen->is_keluar->jam_is_keluar }}</td>
-                    <td>{{ $absen->is_masuk->jam_is_masuk }}</td>
+                    <td>
+                        {{ $absen->is_keluar->jam_is_keluar }}
+                        <br>
+                        <a href="https://www.google.com/maps/place/{{ $absen->is_keluar->lokasi_is_keluar }}"
+                            target='_blank'>{{ $absen->is_keluar->lokasi_is_keluar }}</a>
+                    </td>
+                    <td>
+                        {{ $absen->is_masuk->jam_is_masuk }}
+                        <br>
+                        <a href="https://www.google.com/maps/place/{{ $absen->is_masuk->lokasi_is_masuk }}"
+                            target='_blank'>{{ $absen->is_masuk->lokasi_is_masuk }}</a>
+                    </td>
 
                     <td>
                         {{ $absen->pulang->jam_pulang }} <br>
 
                         @if (strtotime($absen->pulang->jam_pulang) < strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
+                                strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
                             <small style="color:black"><i>pulang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang))) - strtotime(date('H:i', strtotime($absen->pulang->jam_pulang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
+                                strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
                             <small style="color: black"><i>pulang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->pulang->jam_pulang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang)))) / 60 }}
                                     menit</i></small>
@@ -97,7 +109,9 @@
                             -
                         @else
                             <img src="/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}" alt="foto_pulang"
-                                width="50">
+                                width="50"><br>
+                            <a href="https://www.google.com/maps/place/{{ $absen->pulang->lokasi_pulang }}"
+                                target='_blank'>{{ $absen->pulang->lokasi_pulang }}</a>
                         @endif
                     </td>
                 </tr>

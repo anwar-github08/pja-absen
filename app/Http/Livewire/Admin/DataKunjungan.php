@@ -26,13 +26,13 @@ class DataKunjungan extends Component
         $tanggal = explode(' ', $this->tanggal);
 
         if (count($tanggal) == 1) {
-            $this->kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $this->kunjungans = Kunjungan::where('tanggal_kunjungan', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
         } else {
 
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $this->kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'desc')->with('karyawan')->get();
+            $this->kunjungans = Kunjungan::whereBetween('tanggal_kunjungan', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_kunjungan', 'asc')->with('karyawan')->get();
         }
 
         $this->dispatchBrowserEvent('triggerJs');

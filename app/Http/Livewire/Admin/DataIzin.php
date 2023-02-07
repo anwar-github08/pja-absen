@@ -26,13 +26,13 @@ class DataIzin extends Component
         $tanggal = explode(' ', $this->tanggal);
 
         if (count($tanggal) == 1) {
-            $this->izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->with('karyawan')->get();
+            $this->izins = Izin::where('tanggal_izin', date('Y-m-d', strtotime($tanggal[0])))->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
         } else {
 
             $tanggalAwal = date('Y-m-d', strtotime($tanggal[0]));
             $tanggalAkhir = date('Y-m-d', strtotime($tanggal[2]));
 
-            $this->izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'desc')->with('karyawan')->get();
+            $this->izins = Izin::whereBetween('tanggal_izin', [$tanggalAwal, $tanggalAkhir])->orderby('tanggal_izin', 'asc')->with('karyawan')->get();
         }
 
         $this->dispatchBrowserEvent('triggerJs');

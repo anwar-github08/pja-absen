@@ -41,6 +41,8 @@
 # jika karyawan dihapus, semua data yang ada id karyawan akan kehapus
 # symlink pada hosting
 # solusi lokasi
+# untuk export absen pdf kasih lokasi
+compress image sebelum upload
 cara save images untuk excel
 
 /note/
