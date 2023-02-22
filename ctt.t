@@ -42,8 +42,12 @@
 # symlink pada hosting
 # solusi lokasi
 # untuk export absen pdf kasih lokasi
-compress image sebelum upload
-cara save images untuk excel
+# cara save images untuk excel
+# sudah bisa download image, tinggal pasangkan di hosting, kasih file anonymous.png terlebih dahulu pada hosting
+# download image di hosting belum bisa
+# compress image sebelum upload
+# compress image sudah bisa tinggal pasang dihossting
+
 
 /note/
 akses jabatan harus ada minimal 1, agar tidak error
@@ -66,6 +70,29 @@ atur .env
 buat symlink
 
 selesai
+
+
+/cara pasang intervention/image/
+jalankan
+composer require intervention/image
+
+tambahkan pada file config/app.php
+provider
+Intervention\Image\ImageServiceProvider::class
+aliases
+'Image' => Intervention\Image\Facades\Image::class
+
+jalankan
+php artisan vendor:publish --provider="Intervention\Image\ImageServiceProviderLaravelRecent"
+
+tambahkan pada component atau controller
+use Intervention\Image\ImageManagerStatic as Image;
+
+script
+$img = Image::make($this->foto_datang->path())->resize(500, 500);
+$img->save('F:\laravel\pja-absen\public\storage\foto_datang/' . $imgName, 60);
+
+
 
 
 

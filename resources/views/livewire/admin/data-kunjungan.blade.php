@@ -46,6 +46,8 @@
     @if (count($kunjungans) !== 0)
         <a href="/exportExcelKunjungan/{{ $tanggal }}" class="btn btn-sm btn-success mt-3">Export Excel</a>
         <a href="/exportPdfKunjungan/{{ $tanggal }}" class="btn btn-sm btn-info mt-3">Export PDF</a>
+        <a href="/exportFotoKunjungan/{{ $tanggal }}" class="btn btn-sm btn-secondary mt-3">Export Foto
+            Kunjungan</a>
         <button class="btn btn-danger btn-sm mt-3"
             onclick="return confirm('data akan dihapus..!!') || event.stopImmediatePropagation()"
             wire:click='deleteData'>Hapus Data</button>

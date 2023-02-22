@@ -7,6 +7,7 @@ use App\Models\Datang;
 use Livewire\Component;
 use App\Models\Karyawan;
 use Livewire\WithFileUploads;
+use Intervention\Image\ImageManagerStatic as Image;
 use App\Http\Controllers\LokasiController;
 
 date_default_timezone_set('Asia/Bangkok');
@@ -93,6 +94,7 @@ class DatangCreate extends Component
 
     public function storeDatang()
     {
+
         // validasi
         $this->validate([
             'foto_datang' => 'image'
@@ -102,7 +104,11 @@ class DatangCreate extends Component
         $imgName = date('dmyhis') . $this->karyawan_id . '.' . $this->foto_datang->extension();
 
         // simpan foto di direktori
-        $this->foto_datang->storeAs('foto_datang', $imgName, 'public');
+        // $this->foto_datang->storeAs('foto_datang', $imgName, 'public');
+
+        // proses compress image dan simpan
+        $img = Image::make($this->foto_datang->path())->resize(500, 500);
+        $img->save('F:\laravel\pja-absen\public\storage\foto_datang/' . $imgName, 60);
 
         // simpan di db
         $datang = Datang::create([

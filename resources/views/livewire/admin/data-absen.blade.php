@@ -39,12 +39,12 @@
                         {{ $absen->datang->jam_datang }} <br>
 
                         @if (strtotime($absen->datang->jam_datang) < strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
+                                strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_sebelum_datang))
                             <small style="color:yellowgreen"><i>datang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang))) - strtotime(date('H:i', strtotime($absen->datang->jam_datang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->datang->jam_datang) > strtotime($absen->jam_kerja->jam_datang) and
-                            strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
+                                strtotime($absen->datang->jam_datang) <= strtotime($absen->jam_kerja->jam_setelah_datang))
                             <small style="color: yellow"><i>datang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->datang->jam_datang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_datang)))) / 60 }}
                                     menit</i></small>
@@ -77,12 +77,12 @@
                         {{ $absen->pulang->jam_pulang }} <br>
 
                         @if (strtotime($absen->pulang->jam_pulang) < strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
+                                strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_sebelum_pulang))
                             <small style="color:yellow"><i>pulang lebih awal
                                     {{ (strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang))) - strtotime(date('H:i', strtotime($absen->pulang->jam_pulang)))) / 60 }}
                                     menit</i></small>
                         @elseif(strtotime($absen->pulang->jam_pulang) > strtotime($absen->jam_kerja->jam_pulang) and
-                            strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
+                                strtotime($absen->pulang->jam_pulang) <= strtotime($absen->jam_kerja->jam_setelah_pulang))
                             <small style="color: yellowgreen"><i>pulang terlambat
                                     {{ (strtotime(date('H:i', strtotime($absen->pulang->jam_pulang))) - strtotime(date('H:i', strtotime($absen->jam_kerja->jam_pulang)))) / 60 }}
                                     menit</i></small>
@@ -116,6 +116,8 @@
     @if (count($absens) !== 0)
         <a href="/exportExcelAbsen/{{ $tanggal }}" class="btn btn-sm btn-success mt-3">Export Excel</a>
         <a href="/exportPdfAbsen/{{ $tanggal }}" class="btn btn-sm btn-info mt-3">Export PDF</a>
+        <a href="/exportFotoDatang/{{ $tanggal }}" class="btn btn-sm btn-secondary mt-3">Export Foto Datang</a>
+        <a href="/exportFotoPulang/{{ $tanggal }}" class="btn btn-sm btn-secondary mt-3">Export Foto Pulang</a>
         <button class="btn btn-danger btn-sm mt-3"
             onclick="return confirm('data akan dihapus..!!') || event.stopImmediatePropagation()"
             wire:click='deleteData'>Hapus Data</button>

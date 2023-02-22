@@ -4,6 +4,7 @@ header('Content-Disposition: attachment; filename=DataAbsen.xls');
 header('Content-Transfer-Encoding: BINARY');
 ?>
 
+
 <!DOCTYPE html>
 <html>
 
@@ -73,10 +74,11 @@ header('Content-Transfer-Encoding: BINARY');
                         @if ($absen->datang->foto_datang == null)
                             -
                         @else
-                            <img src="https://sigasik.pakisjayaabadi.com/storage/foto_datang/{{ $absen->datang->foto_datang }}"
-                                alt="foto_datang" width="50">
+                            {{-- <img src="https://sigasik.pakisjayaabadi.com/storage/foto_datang/{{ $absen->datang->foto_datang }}"
+                                alt="foto_datang" width="50"> --}}
                             {{-- <img src="/storage/foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang"
-                                    width="100"> --}}
+                                width="100"> --}}
+                            <img src="foto_datang/{{ $absen->datang->foto_datang }}" alt="foto_datang" width="50">
                         @endif
                     </td>
                     <td>{{ $absen->is_keluar->jam_is_keluar }}</td>
@@ -104,13 +106,14 @@ header('Content-Transfer-Encoding: BINARY');
                         @if ($absen->pulang->foto_pulang == null)
                             -
                         @else
-                            <img src="https://sigasik.pakisjayaabadi.com/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}"
-                                alt="foto_pulang" width="50">
+                            {{-- <img src="https://sigasik.pakisjayaabadi.com/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}"
+                                alt="foto_pulang" width="50"> --}}
+                            {{-- <img src="/storage/foto_pulang/{{ $absen->pulang->foto_pulang }}" alt="foto_pulang"
+                                width="100"> --}}
+                            <img src="foto_pulang/{{ $absen->pulang->foto_pulang }}" alt="foto_pulang" width="50">
                         @endif
                     </td>
                 </tr>
-
-                {{ file_put_contents($absen->pulang->foto_pulang, file_get_contents('https://sigasik.pakisjayaabadi.com/storage/foto_pulang/' . $absen->pulang->foto_pulang)) }}
             @endforeach
         </tbody>
     </table>

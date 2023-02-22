@@ -8,7 +8,6 @@ use App\Http\Controllers\IstirahatController;
 use App\Http\Controllers\KunjunganController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\LoginController;
-use App\Http\Controllers\LokasiController;
 use App\Models\Karyawan;
 
 /*
@@ -21,7 +20,6 @@ use App\Models\Karyawan;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 
 // Route::get('/home', function ($id) {
 //     return view('home', [
@@ -38,34 +36,6 @@ use App\Models\Karyawan;
 //     $toFolder = '/home/pakisjay/sigasik.pakisjayaabadi.com/storage';
 //     symlink($fromFolder, $toFolder);
 // });
-
-// positionstack
-Route::get('tesLokasi', function () {
-
-    $apiKey = 'f9bec67a76290a05d9287ad277317755';
-
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_FRESH_CONNECT  => true,
-        // CURLOPT_URL            => 'http://api.positionstack.com/v1/reverse?access_key=' . $apiKey . '&query=-6.926894325350347, 110.79100588863616&limit=2',
-        CURLOPT_URL            => 'https://www.latlong.net/c/?lat=-6.926894325350347&long=110.79100588863616',
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HEADER         => false,
-        CURLOPT_FAILONERROR    => false,
-        CURLOPT_IPRESOLVE      => CURL_IPRESOLVE_V4
-    ));
-
-    $response = curl_exec($curl);
-    $error = curl_error($curl);
-
-    curl_close($curl);
-    dd($response);
-
-    $response = json_decode($response)->data;
-    return $response ? $response : $error;
-});
-
 
 // rute middleware guest->bisa diakses ketika belum login
 Route::middleware('guest')->group(function () {
@@ -170,4 +140,8 @@ Route::middleware('admin')->group(function () {
 
     Route::get('/exportExcelIzin/{tanggal}', [AdminController::class, 'exportExcelIzin']);
     Route::get('/exportPdfIzin/{tanggal}', [AdminController::class, 'exportPdfIzin']);
+
+    Route::get('/exportFotoDatang/{tanggal}', [AdminController::class, 'exportFotoDatang']);
+    Route::get('/exportFotoPulang/{tanggal}', [AdminController::class, 'exportFotoPulang']);
+    Route::get('/exportFotoKunjungan/{tanggal}', [AdminController::class, 'exportFotoKunjungan']);
 });

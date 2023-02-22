@@ -46,8 +46,9 @@ header('Content-Transfer-Encoding: BINARY');
                     <td>{{ $kunjungan->karyawan->nama_karyawan }}</td>
                     <td>{{ date('d-m-Y', strtotime($kunjungan->tanggal_kunjungan)) }}</td>
                     <td>{{ $kunjungan->jam_kunjungan }}</td>
-                    <td><img src="F:\laravel\pja-absen\storage\app\public\foto_kunjungan\{{ $kunjungan->foto_kunjungan }}"
-                            alt="foto_kunjungan" width="50"></td>
+                    {{-- <td><img src="F:\laravel\pja-absen\storage\app\public\foto_kunjungan\{{ $kunjungan->foto_kunjungan }}"
+                        alt="foto_kunjungan" width="50"></td> --}}
+                    <td><img src="foto_kunjungan/{{ $kunjungan->foto_kunjungan }}" alt="foto_kunjungan" width="50">
                 </tr>
             @endforeach
         </tbody>

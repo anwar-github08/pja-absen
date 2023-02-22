@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Kunjungan;
 use Livewire\WithFileUploads;
 use App\Http\Controllers\LokasiController;
+use Intervention\Image\ImageManagerStatic as Image;
 
 date_default_timezone_set('Asia/Bangkok');
 class KunjunganCreate extends Component
@@ -69,7 +70,11 @@ class KunjunganCreate extends Component
         $imgName = date('dmyhis') . $this->karyawan_id . '.' . $this->foto_kunjungan->extension();
 
         // simpan foto di direktori
-        $this->foto_kunjungan->storeAs('foto_kunjungan', $imgName, 'public');
+        // $this->foto_kunjungan->storeAs('foto_kunjungan', $imgName, 'public');
+
+        // proses compress image dan simpan
+        $img = Image::make($this->foto_kunjungan->path())->resize(500, 500);
+        $img->save('F:\laravel\pja-absen\public\storage\foto_kunjungan/' . $imgName, 60);
 
         // simpan di db
         Kunjungan::create([

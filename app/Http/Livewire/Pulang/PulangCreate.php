@@ -8,6 +8,7 @@ use Livewire\Component;
 use App\Models\Karyawan;
 use Livewire\WithFileUploads;
 use App\Http\Controllers\LokasiController;
+use Intervention\Image\ImageManagerStatic as Image;
 
 date_default_timezone_set('Asia/Bangkok');
 
@@ -21,6 +22,8 @@ class PulangCreate extends Component
     public $jam_pulang;
     public $lokasi_pulang;
     public $foto_pulang;
+
+    public $jam_kerja_id;
 
     public $isAbsen = false;
 
@@ -77,7 +80,11 @@ class PulangCreate extends Component
         $imgName = date('dmyhis') . $this->karyawan_id . '.' . $this->foto_pulang->extension();
 
         // simpan foto di direktori
-        $this->foto_pulang->storeAs('foto_pulang', $imgName, 'public');
+        // $this->foto_pulang->storeAs('foto_pulang', $imgName, 'public');
+
+        // proses compress image dan simpan
+        $img = Image::make($this->foto_pulang->path())->resize(500, 500);
+        $img->save('F:\laravel\pja-absen\public\storage\foto_pulang/' . $imgName, 60);
 
         // simpan di db
         $pulang = Pulang::create([
